@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Future Kimonos — Inspiration Board</title>
+<style>
+  :root{
+    --bg:#faf9f7; --card:#fff; --ink:#1a1a18; --muted:#6b6a65;
+    --line:#e3e1db; --star:#c9a227; --accent:#1a1a18; --new:#ED1F24;
+    --rej:#b4413a; --ref:#5b6f8c;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#141413; --card:#1e1e1c; --ink:#f2f1ee; --muted:#9a9892;
+           --line:#33322f; --star:#e0b93a; --accent:#f2f1ee; --new:#ff4b50;
+           --rej:#e0615a; --ref:#8ba3c4; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:400 15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;}
+  header{position:sticky;top:0;z-index:10;background:var(--bg);
+    border-bottom:1px solid var(--line);padding:16px 28px 12px;}
+  .hrow{display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
+  h1{font-size:19px;font-weight:500;margin:0;}
+  .meta{font-size:13px;color:var(--muted);}
+  .spacer{flex:1}
+  button{font:inherit;font-size:13px;padding:7px 14px;border-radius:7px;
+    border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;}
+  button:hover{border-color:var(--muted)}
+  button.primary{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+  select{font:inherit;font-size:13px;padding:6px 10px;border-radius:7px;
+    border:1px solid var(--line);background:var(--card);color:var(--ink);}
+  .filters{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;align-items:center}
+  .chip{font-size:12px;padding:4px 11px;border-radius:20px;background:var(--card);
+    border:1px solid var(--line);color:var(--muted);cursor:pointer;user-select:none}
+  .chip:hover{border-color:var(--muted)}
+  .chip.on{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+  .flabel{font-size:12px;color:var(--muted);margin-right:2px}
+  main{padding:28px;max-width:1400px;margin:0 auto;}
+  .note{font-size:13px;color:var(--muted);margin:0 0 28px;max-width:74ch;}
+  h2{font-size:15px;font-weight:500;margin:34px 0 4px;}
+  .bcount{font-size:13px;color:var(--muted);font-weight:400;margin-left:8px;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px;margin-top:14px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    overflow:hidden;display:flex;flex-direction:column;transition:border-color .15s,opacity .15s;position:relative}
+  .card.starred{border-color:var(--star);border-width:2px;}
+  .card.rejected{border-color:var(--rej);opacity:.42}
+  .card.rejected:hover{opacity:.9}
+  .badge{position:absolute;top:9px;left:9px;font-size:10px;letter-spacing:.04em;
+    text-transform:uppercase;padding:3px 8px;border-radius:20px;
+    background:rgba(0,0,0,.62);color:#fff;backdrop-filter:blur(4px)}
+  .cls{position:absolute;top:9px;left:9px;font-size:10px;letter-spacing:.04em;
+    text-transform:uppercase;padding:3px 8px;border-radius:20px;color:#fff;backdrop-filter:blur(4px)}
+  .terr{position:absolute;top:34px;left:9px;font-size:10px;letter-spacing:.04em;
+    padding:3px 8px;border-radius:20px;background:rgba(0,0,0,.5);color:#fff;backdrop-filter:blur(4px)}
+  .newdot{position:absolute;top:9px;right:9px;font-size:10px;letter-spacing:.04em;
+    text-transform:uppercase;padding:3px 8px;border-radius:20px;background:var(--new);color:#fff}
+  .scr{position:absolute;bottom:9px;right:9px;font:11px ui-monospace,SFMono-Regular,Menlo,monospace;
+    padding:2px 7px;border-radius:20px;background:rgba(0,0,0,.62);color:#fff}
+  .vwrap{position:relative}
+  .thumb{width:100%;aspect-ratio:1;object-fit:cover;display:block;background:var(--bg);}
+  .sw{display:grid;grid-template-columns:repeat(auto-fit,minmax(40px,1fr));aspect-ratio:2/1;}
+  .sw div{width:100%;height:100%}
+  .body{padding:12px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .t{font-size:14px;font-weight:500;line-height:1.35}
+  .b{font-size:12px;color:var(--muted)}
+  .n{font-size:13px;color:var(--ink);opacity:.85}
+  .hex{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted)}
+  .tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
+  .tag{font-size:11px;padding:2px 7px;border-radius:20px;background:var(--bg);
+    border:1px solid var(--line);color:var(--muted)}
+  .foot{display:flex;align-items:center;gap:10px;padding:10px 14px;border-top:1px solid var(--line)}
+  .star{background:none;border:none;padding:0;font-size:19px;line-height:1;
+    color:var(--line);cursor:pointer;transition:color .15s}
+  .star.on{color:var(--star)}
+  .rej{background:none;border:none;padding:0;font-size:15px;line-height:1;
+    color:var(--line);cursor:pointer;transition:color .15s}
+  .rej:hover{color:var(--rej)}
+  .rej.on{color:var(--rej)}
+  .seen{font-size:11px;color:var(--muted);margin-left:auto}
+  .why{display:none;flex-wrap:wrap;gap:5px;padding:10px 14px;border-top:1px solid var(--line);
+    background:var(--bg)}
+  .why.open{display:flex}
+  .rc{font-size:11px;padding:3px 9px;border-radius:20px;background:var(--card);
+    border:1px solid var(--line);color:var(--muted);cursor:pointer;user-select:none}
+  .rc:hover{border-color:var(--rej);color:var(--rej)}
+  .rc.on{background:var(--rej);border-color:var(--rej);color:#fff}
+  .rlabel{font-size:11px;color:var(--rej);padding:8px 14px 0;font-style:italic}
+  .peer{display:block;font-size:11px;padding:6px 14px 0;letter-spacing:.01em}
+  .peer.star{color:var(--star)}
+  .peer.rejd{color:var(--rej)}
+  .agree{position:absolute;bottom:9px;left:9px;font-size:10px;letter-spacing:.04em;
+    text-transform:uppercase;padding:3px 8px;border-radius:20px;background:var(--star);color:#141413}
+  a{color:var(--muted);font-size:12px;text-decoration:none;border-bottom:1px solid var(--line)}
+  a:hover{color:var(--ink)}
+  #out{width:100%;min-height:260px;margin-top:20px;padding:14px;border-radius:8px;
+    border:1px solid var(--line);background:var(--card);color:var(--ink);
+    font:12.5px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;display:none}
+  .empty{font-size:13px;color:var(--muted);padding:40px 0}
+</style>
+</head>
+<body>
+<header>
+  <div class="hrow">
+    <div>
+      <h1>Inspiration board</h1>
+      <div class="meta" id="meta"></div>
+    </div>
+    <div class="spacer"></div>
+    <span class="meta">Reviewing as</span>
+    <select id="who" onchange="setWho()">
+      <option value="ladana">Ladana</option>
+      <option value="james">James</option>
+    </select>
+    <span class="meta" id="tally">0 starred · 0 rejected</span>
+    <span class="meta" id="synced"></span>
+    <button onclick="saveBlock()">Save my review</button>
+    <button class="primary" onclick="picks()">Export review</button>
+  </div>
+  <div class="filters" id="filters"></div>
+</header>
+<main>
+  <p class="note" id="note"></p><p class="note" style="border:1px solid var(--line);border-radius:8px;padding:10px 12px"><strong>Shared copy.</strong> Everything is inside this one file, so it works offline. It is a snapshot — it will not pick up new finds. Your stars and rejects are saved in this browser only: when you are done, press <strong>Save my review</strong> and send the box back.</p>
+  <div id="board"></div>
+  <textarea id="out" readonly></textarea>
+</main>
+<script>
+window.BOARD_META = {
+  "updated": "2026-08-06",
+  "runLabel": "Run 3 — 6 curated + 21 product sweep",
+  "windowDays": 30,
+  "note": "Two tiers on this board. CURATED (6 finds, scored 5–6/6) is reference artwork that passed the full premium bar. SWEEP (21 finds) is the product half — real garments across MX, BJJ and teamwear, shown without a quality gate at Ladana's instruction so the reject buttons can teach the filter. Sweep scores are my honest read, not a gate; disagree freely, that is the point. Every image was looked at in a contact sheet before filing. 190 products assessed, 21 filed, women's items and cotton/mineral-wash garments filtered out before scoring. Read briefs/2026-08-06.md alongside this."
+};
+
+window.FINDS = [
+  {
+    "id": "F0806-01",
+    "bucket": "08-standout-graphic",
+    "lane": "reference",
+    "territory": "printmaking-remix",
+    "class": "reference",
+    "score": 6,
+    "title": "Akashi Ridayu Hidemoto",
+    "brand": "Utagawa Kuniyoshi, ca. 1848 — The Met, public domain",
+    "note": "The Takeshi structure, 178 years earlier. One warrior hero on a cream void; the straw rain-cape reads as a single texture mass rather than drawn strands; vertical title cartouche locked to the top-right corner; a dense block of text used as grey texture, not as reading matter; three red seals at three different scales. Four type registers on one sheet. The argument that the editorial-poster layout is historically native to this subject, not a modern import.",
+    "img": "https://images.metmuseum.org/CRDImages/as/web-large/DP143375.jpg",
+    "source": "https://www.metmuseum.org/art/collection/search/63364",
+    "tags": ["hero figure", "vertical cartouche", "text as texture", "seal system", "cream void"],
+    "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-02",
+    "bucket": "06-garment-layout",
+    "lane": "reference",
+    "territory": "printmaking-remix",
+    "class": "reference",
+    "score": 6,
+    "title": "Horse and Rider",
+    "brand": "Tsukioka Yoshitoshi — The Met, public domain",
+    "note": "A triptych is a back panel. Rider and rearing horse occupy a single horizontal band across the middle third; the top and bottom thirds are empty cream. The cartouche anchors the far left, the seals the far right, and the horse's tail and banner break the frame on both edges. The lesson for a rash guard: let the hero own one band and leave the shoulders and hem genuinely empty — the emptiness is what makes the band read at speed.",
+    "img": "https://images.metmuseum.org/CRDImages/as/web-large/DP146816.jpg",
+    "source": "https://www.metmuseum.org/art/collection/search/56681",
+    "tags": ["horizontal band", "empty thirds", "breaks the frame", "wide format", "back panel logic"],
+    "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-03",
+    "bucket": "09-gradient-shape",
+    "lane": "reference",
+    "territory": "neo-japanese",
+    "class": "reference",
+    "score": 6,
+    "title": "Moon in the Flame — One Hundred Aspects of the Moon",
+    "brand": "Tsukioka Yoshitoshi, February 1886 — The Met, public domain",
+    "note": "Three elements and nothing else: a flat near-black armoured figure, an orange flame wash behind it, one hard white circle. The figure is almost pure silhouette — detail only where the armour lacing catches. The moon is a geometric counterform set against organic flame. A flat dark hero, a warm gradient and one hard geometric shape is a complete composition, and it needs no illustration detail to work at distance.",
+    "img": "https://images.metmuseum.org/CRDImages/as/web-large/DP148164.jpg",
+    "source": "https://www.metmuseum.org/art/collection/search/73623",
+    "tags": ["silhouette hero", "geometric counterform", "flame wash", "three elements", "reads at distance"],
+    "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-04",
+    "bucket": "04-light-dark-placement",
+    "lane": "reference",
+    "territory": "neo-japanese",
+    "class": "reference",
+    "score": 5,
+    "title": "Kurahashi Densuke Kiyohara Takeyuki",
+    "brand": "Tsukioka Yoshitoshi, 19th century — The Met, public domain",
+    "note": "Structurally identical to a Future Kimonos back panel. Near-black ground across the whole sheet, one figure standing off-centre, a vertical red-topped cartouche running down the upper right, and exactly two colour events — the striped hakama and a single green fan. Everything else is black on black. Proof that a dark base does not mean a flat base: the ground carries tone, the figure carries the contrast.",
+    "img": "https://images.metmuseum.org/CRDImages/as/web-large/DP148168.jpg",
+    "source": "https://www.metmuseum.org/art/collection/search/73627",
+    "tags": ["black ground", "two colour events", "vertical cartouche", "off-centre hero", "black on black"],
+    "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-05",
+    "bucket": "09-gradient-shape",
+    "lane": "reference",
+    "territory": "printmaking-remix",
+    "class": "reference",
+    "score": 5,
+    "title": "Nichiren in Snow at Tsukahara",
+    "brand": "Utagawa Kuniyoshi, ca. 1840 — The Met, public domain",
+    "note": "A bokashi gradient — ink hand-wiped from dark to light — running up from a deep indigo base into pure paper white, speckled snow over the top, and one small red-robed figure as the only saturated accent in an otherwise empty field. Directly relevant to the trade finding that vertical torso fades are the most-requested sublimation effect this year: this is that effect solved by hand in 1840, with the crucial addition that a gradient is worth nothing without one small hot accent to measure it against.",
+    "img": "https://images.metmuseum.org/CRDImages/as/web-large/DP124470.jpg",
+    "source": "https://www.metmuseum.org/art/collection/search/56779",
+    "tags": ["bokashi gradient", "single accent", "negative space", "speckle texture", "vertical fade"],
+    "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-06",
+    "bucket": "01-colour-palette",
+    "lane": "reference",
+    "territory": "neo-japanese",
+    "class": "reference",
+    "score": 5,
+    "title": "Moon in the Flame — sampled palette",
+    "brand": "Sampled off the Yoshitoshi print, not estimated",
+    "note": "Read off the digitised print pixel by pixel rather than guessed. Note what it is NOT: no pure black, no pure white, no saturated red. The darkest value is a blue-black, the lights are all warm paper tones, and the only heat is one soft orange. Inverted onto a black poly-spandex base these become an accent set — warm sand and flame against near-black — which is a genuinely different register from the brand's usual black and #ED1F24. Caveat: sampled from a 140-year-old sheet, so the creams carry paper ageing as well as ink.",
+    "swatches": ["#303040", "#E0C090", "#F0D0B0", "#F0B070", "#F0F0E0"],
+    "swatchNames": ["indigo black", "aged ochre", "warm sand", "flame", "paper"],
+    "source": "https://www.metmuseum.org/art/collection/search/73623",
+    "tags": ["sampled not guessed", "no pure black", "warm accent set", "paper ageing"],
+    "firstSeen": "2026-08-06"
+  },
+
+  /* ── SWEEP TIER ───────────────────────────────────────────────────────────
+     The product half. No premium gate — Ladana asked to see everything and
+     reject fast, so the reject reasons become the filter. Scores are my read,
+     not a gate. Women's SKUs and cotton / mineral-wash garments were removed
+     before this point; everything below is sublimated synthetic. */
+
+  {
+    "id": "F0806-10", "bucket": "08-standout-graphic", "lane": "moto-mtb",
+    "territory": "motorsport-graphics", "class": "buildable", "score": 5, "tier": "sweep",
+    "title": "Grindhouse Air-Cooled Club Jersey — Black/Teal", "brand": "Fasthouse",
+    "note": "Black base, vertical lock-up running down the ribs, teal as the single accent. The type runs along the body axis rather than across the chest — the same move as the vertical TAKESHI on your own back panel, applied to a side seam. Newest MX drop in the sweep, 5 Aug.",
+    "img": "https://cdn.shopify.com/s/files/1/0259/6401/files/GrindhouseAir-CooledClubJersey-Black_Teal_F_1200.jpg",
+    "source": "https://www.fasthouse.com/products/grindhouse-air-cooled-club-jersey-black-teal",
+    "tags": ["vertical lockup", "single accent", "black base", "side-seam type"], "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-11", "bucket": "01-colour-palette", "lane": "moto-mtb",
+    "territory": "motorsport-graphics", "class": "buildable", "score": 4, "tier": "sweep",
+    "title": "Alloy Mesa SS Jersey — Heather Gold/Brown", "brand": "Fasthouse",
+    "note": "Retro desert palette — heather gold body, brown yoke, a hard horizontal chest band. Almost no graphic; the colour split does all the work. Included as the counter-argument to black-anchored: warm earth tones are rare in no-gi and would stand out on a mat full of black.",
+    "img": "https://cdn.shopify.com/s/files/1/0259/6401/products/AlloyMesaSSJersey-HeatherGold_Brown_F_1200.jpg",
+    "source": "https://www.fasthouse.com/products/alloy-mesa-ss-jersey-heather-gold-brown",
+    "tags": ["earth tones", "chest band", "retro moto", "no black"], "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-12", "bucket": "02-font-type", "lane": "moto-mtb",
+    "territory": "motorsport-graphics", "class": "buildable", "score": 5, "tier": "sweep",
+    "title": "Hot Wheels Grindhouse Jersey — White/Black", "brand": "Fasthouse",
+    "note": "Licensed collab. Chequer flag panel down both sleeves, flame-script wordmark mirrored so it reads from either side. The collab mechanic matters more than the graphic: a borrowed IP gives a drop a story and a reason to be limited — which is exactly the gap in an eighteen-month cadence.",
+    "img": "https://cdn.shopify.com/s/files/1/0259/6401/products/GrindhouseHotWheelsJersey-White_Black_F_1200.jpg",
+    "source": "https://www.fasthouse.com/products/grindhouse-hot-wheels-jersey-white-black",
+    "tags": ["licensed collab", "chequer sleeve", "mirrored wordmark", "limited story"], "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-13", "bucket": "02-font-type", "lane": "moto-mtb",
+    "territory": "motorsport-graphics", "class": "buildable", "score": 5, "tier": "sweep",
+    "title": "Smoke Show Live 26 Jersey — Black", "brand": "Fasthouse",
+    "note": "Oversized script wordmark across the chest at a scale that crops at the seams, with a small technical block beneath it. Extreme type-scale contrast — the same mechanic as your Serpent piece, where enormous script sits against a 6pt caption. Proof it is not unique to you.",
+    "img": "https://cdn.shopify.com/s/files/1/0259/6401/files/SmokeSHow-Front.jpg",
+    "source": "https://www.fasthouse.com/products/smoke-show-live-26-jersey-black",
+    "tags": ["oversized script", "type-scale contrast", "crops at seam", "technical caption"], "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-14", "bucket": "07-theme", "lane": "moto-mtb",
+    "territory": "motorsport-graphics", "class": "buildable", "score": 4, "tier": "sweep",
+    "title": "USA Grindhouse Subside Jersey — Black", "brand": "Fasthouse",
+    "note": "Palm and skull motif over a chequer hem band on black. Americana crossed with moto — the same territory as FK's All American and Yankee series but resolved with far more restraint: one motif, one band, black everywhere else.",
+    "img": "https://cdn.shopify.com/s/files/1/0259/6401/products/USAGrindhouseSubsideJersey-Black_1200.jpg",
+    "source": "https://www.fasthouse.com/products/usa-grindhouse-subside-jersey-black",
+    "tags": ["americana", "skull motif", "chequer hem", "restrained"], "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-15", "bucket": "04-light-dark-placement", "lane": "moto-mtb",
+    "territory": "motorsport-graphics", "class": "buildable", "score": 4, "tier": "sweep",
+    "title": "Grindhouse Torino Jersey — Red/Black", "brand": "Fasthouse",
+    "note": "Red body, black shoulder yoke, chequer running the shoulder seam. Textbook moto shoulder-block geometry — the colour break follows the deltoid rather than the pattern piece, which is what stops it reading as cheap panel blocking.",
+    "img": "https://cdn.shopify.com/s/files/1/0259/6401/products/GrindhouseTorinoJersey-Red-Black_F_1200.jpg",
+    "source": "https://www.fasthouse.com/products/grindhouse-torino-jersey-red-black",
+    "tags": ["shoulder yoke", "follows deltoid", "chequer seam", "red black"], "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-16", "bucket": "09-gradient-shape", "lane": "moto-mtb",
+    "territory": "motorsport-graphics", "class": "buildable", "score": 5, "tier": "sweep",
+    "title": "SE Ultra LS Jersey Proton — White", "brand": "Troy Lee Designs",
+    "note": "White base with a magenta-to-teal gradient wash pushed through the torso and dissolving before the hem. The gradient is a shape, not a background — it has an edge and a direction. This is the most technically accomplished sublimation in the whole sweep.",
+    "img": "https://cdn.shopify.com/s/files/1/0248/5587/1548/files/MOTO_SEULTRA_PROTON_WHITE_JERSEY_01_4635a5cf-428c-4d0a-9285-f5ebee428b3c.jpg",
+    "source": "https://www.troyleedesigns.com/products/se-ultra-ls-jersey-proton-354033-white",
+    "tags": ["gradient as shape", "dissolving hem", "white base", "best sublimation"], "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-17", "bucket": "09-gradient-shape", "lane": "moto-mtb",
+    "territory": "motorsport-graphics", "class": "buildable", "score": 5, "tier": "sweep",
+    "title": "SE Pro LS Jersey Sever — Black/Gray", "brand": "Troy Lee Designs",
+    "note": "The restraint version of the same engine: black to grey, tonal, no hue shift, with the graphic only readable where the light catches. Directly answers the trade finding on vertical torso fades, and it is the closest thing in the sweep to the internal preference for deep greys.",
+    "img": "https://cdn.shopify.com/s/files/1/0248/5587/1548/files/MOTO_SEPRO_SEVER_BLACKGRAY_JERSEY_01.jpg",
+    "source": "https://www.troyleedesigns.com/products/se-pro-ls-jersey-sever-301058-black-gray",
+    "tags": ["tonal fade", "no hue shift", "restraint direction", "black grey"], "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-18", "bucket": "06-garment-layout", "lane": "moto-mtb",
+    "territory": "motorsport-graphics", "class": "buildable", "score": 4, "tier": "sweep",
+    "title": "SE Pro LS Jersey Sever — White/Teal", "brand": "Troy Lee Designs",
+    "note": "Same Sever artwork, third colourway. Filed deliberately next to the black/grey so you can see the system working: one panel geometry, three completely different moods. That reusability is the structural answer to a cadence problem — one artwork, a season of drops.",
+    "img": "https://cdn.shopify.com/s/files/1/0248/5587/1548/files/MOTO_SEPRO_SEVER_WHITETEAL_JERSEY_01_8ff7402f-bc7d-414e-b049-90c46c86d2f9.jpg",
+    "source": "https://www.troyleedesigns.com/products/se-pro-ls-jersey-sever-301058-white-teal",
+    "tags": ["one artwork three moods", "reusable system", "cadence answer"], "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-19", "bucket": "03-pattern", "lane": "moto-mtb",
+    "territory": "motorsport-graphics", "class": "buildable", "score": 4, "tier": "sweep",
+    "title": "SE Ultra LS Jersey Vision — Stone White/Carbon", "brand": "Troy Lee Designs",
+    "note": "Carbon-weave texture printed as a panel rather than used as a background, with stone white blocking around it. Printed material-mimicry — a texture pretending to be a construction. Cheap when it is lazy, effective here because it is confined to one panel.",
+    "img": "https://cdn.shopify.com/s/files/1/0248/5587/1548/files/MOTO_SEULTRA_VISION_STONEWHITECARBON_JERSEY_01_2d2f2a18-23a2-4ee2-8cb5-4cc27ce637f4.jpg",
+    "source": "https://www.troyleedesigns.com/products/se-ultra-ls-jersey-vision-354060-stone-white-carbon",
+    "tags": ["material mimicry", "carbon weave", "confined to panel"], "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-20", "bucket": "01-colour-palette", "lane": "moto-mtb",
+    "territory": "motorsport-graphics", "class": "buildable", "score": 4, "tier": "sweep",
+    "title": "SE Pro LS Jersey Myth — Dark Olive/Pumice", "brand": "Troy Lee Designs",
+    "note": "Dark olive with dusty pink. A genuinely unusual pairing — muted, slightly ugly, memorable. Worth a look precisely because no BJJ brand would risk it, and the whole category defaults to black, red and blue.",
+    "img": "https://cdn.shopify.com/s/files/1/0248/5587/1548/files/MOTO_SEPRO_MYTH_DKOLIVEPUMICE_JERSEY_01_bf883428-a5fb-4c1b-984f-d42612f1f11c.jpg",
+    "source": "https://www.troyleedesigns.com/products/se-pro-ls-jersey-myth-301053-dark-olive-pumice",
+    "tags": ["unusual pairing", "olive and pink", "category outlier"], "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-21", "bucket": "07-theme", "lane": "bjj",
+    "territory": "editorial-composition", "class": "buildable", "score": 5, "tier": "sweep",
+    "title": "Aurelius Rash Guard", "brand": "Gold BJJ",
+    "note": "Deep oxblood base, gold script across the chest, Roman-emperor theme. Mythology as the collection story rather than a motif pasted on — the same play as your Immortal Samurai and Takeshi series, run through a different civilisation. Note the palette restraint: two colours, no illustration.",
+    "img": "https://cdn.shopify.com/s/files/1/1820/5765/files/AureliusKit-Shopify-1x1_2of21.jpg",
+    "source": "https://goldbjj.com/products/aurelius-rash-guard",
+    "tags": ["mythology as story", "oxblood and gold", "two colours", "no illustration"], "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-22", "bucket": "06-garment-layout", "lane": "bjj",
+    "territory": "editorial-composition", "class": "buildable", "score": 5, "tier": "sweep",
+    "title": "Aurelius Shorts", "brand": "Gold BJJ",
+    "note": "The matching half, shipped as a kit. Same oxblood, same gold, wordmark moved to the leg. Filed next to the rash guard on purpose — the set is the product, not the piece, and that is the single most repeatable lesson in this sweep.",
+    "img": "https://cdn.shopify.com/s/files/1/1820/5765/files/AureliusKit-Shopify-1x1_4of21.jpg",
+    "source": "https://goldbjj.com/products/aurelius-shorts",
+    "tags": ["matched set", "kit as product", "wordmark relocated"], "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-23", "bucket": "07-theme", "lane": "bjj",
+    "territory": "editorial-composition", "class": "buildable", "score": 4, "tier": "sweep",
+    "title": "Canarinho Rash Guard", "brand": "Gold BJJ",
+    "note": "Brazil yellow and green, built around Rodrigo Medeiros. National identity plus athlete provenance in one SKU — the two strongest selling mechanics the category has, stacked. Aesthetically it is a football shirt, which may be the point.",
+    "img": "https://cdn.shopify.com/s/files/1/1820/5765/files/RodrigoMedeiros-CanarinhoKit-Shopify-1x1_2of16.jpg",
+    "source": "https://goldbjj.com/products/canarinho-rash-guard",
+    "tags": ["national identity", "athlete provenance", "football shirt logic"], "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-24", "bucket": "06-garment-layout", "lane": "bjj",
+    "territory": "editorial-composition", "class": "buildable", "score": 4, "tier": "sweep",
+    "title": "Canarinho Shorts", "brand": "Gold BJJ",
+    "note": "Blue shorts against the yellow top — the kit deliberately does NOT match tonally, it matches by national reference. A looser way to build a set than the Aurelius approach, and worth comparing directly against it.",
+    "img": "https://cdn.shopify.com/s/files/1/1820/5765/files/RodrigoMedeiros-CanarinhoKit-Shopify-1x1_12of16.jpg",
+    "source": "https://goldbjj.com/products/canarinho-shorts",
+    "tags": ["set by reference not tone", "contrast kit", "compare to Aurelius"], "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-25", "bucket": "07-theme", "lane": "bjj",
+    "territory": "editorial-composition", "class": "buildable", "score": 4, "tier": "sweep",
+    "title": "Finest City Rash Guard", "brand": "Gold BJJ",
+    "note": "Rust brown with SAN DIEGO set as a heavy slab script. Second entry in Gold's city-pride programme after La Ciudad — evidence they are running place-as-identity as a repeatable series, not a one-off. The brown is unusual and reads expensive.",
+    "img": "https://cdn.shopify.com/s/files/1/1820/5765/products/Brown1.jpg?v=1678147750",
+    "source": "https://goldbjj.com/products/finest-city-rash-guard",
+    "tags": ["place as identity", "slab script", "rust brown", "repeatable series"], "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-26", "bucket": "06-garment-layout", "lane": "bjj",
+    "territory": "luxury-streetwear", "class": "buildable", "score": 4, "tier": "sweep",
+    "title": "All-American Basketball Jersey", "brand": "Gold BJJ",
+    "note": "Navy and red basketball cut with USA arched across the chest and a number below. Borrowing an entirely different sport's uniform grammar — arched wordmark, big numeral, side piping. A cut change is a cheaper way to make a drop feel new than a new artwork.",
+    "img": "https://cdn.shopify.com/s/files/1/1820/5765/files/1-Main.jpg?v=1779309414",
+    "source": "https://goldbjj.com/products/all-american-basketball-jersey",
+    "tags": ["borrowed grammar", "arched wordmark", "big numeral", "cut as novelty"], "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-27", "bucket": "03-pattern", "lane": "bjj",
+    "territory": "luxury-streetwear", "class": "buildable", "score": 4, "tier": "sweep",
+    "title": "A1A Fight Jersey", "brand": "Shoyoroll",
+    "note": "Water-camo blue all-over on a basketball-cut fight jersey. Shoyoroll is the category's premium benchmark, so what they do with an all-over print is a useful ceiling check: it is soft, tonal and low-contrast — the opposite of how BJJ usually prints.",
+    "img": "https://cdn.shopify.com/s/files/1/0100/7232/files/Front_04185556-6f77-4ca9-9b07-bd61276fd119.jpg?v=1750884186",
+    "source": "https://shoyoroll.com/products/2025-fight-jersey",
+    "tags": ["water camo", "low contrast all-over", "premium benchmark", "fight jersey cut"], "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-28", "bucket": "03-pattern", "lane": "bjj",
+    "territory": "neo-japanese", "class": "buildable", "score": 4, "tier": "sweep",
+    "title": "High Split MMA Shorts — Snake", "brand": "Tatami",
+    "note": "Snakeskin as an all-over on a high-split short. Directly relevant given Serpent Core and Cobra 2099 already own the serpent motif — this is a competitor working the same animal as texture rather than as illustration. Worth deciding whether that is a threat or a confirmation.",
+    "img": "https://cdn.shopify.com/s/files/1/2116/5995/files/Mens_High_Split_Shorts_Snake_1_09128dc7-3316-49ed-985f-3c07e7b85085.jpg?v=1773044577",
+    "source": "https://www.tatamifightwear.com/products/high-split-mma-shorts-snake",
+    "tags": ["snakeskin all-over", "texture not illustration", "serpent motif overlap"], "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-29", "bucket": "03-pattern", "lane": "bjj",
+    "territory": "luxury-streetwear", "class": "buildable", "score": 4, "tier": "sweep",
+    "title": "High Split MMA Shorts — Crocodile", "brand": "Tatami",
+    "note": "Croc skin, black on black, tonal. The animal-skin-as-luxury-material cue, done at almost zero contrast so it reads as texture at distance and only resolves close up. A genuinely useful trick for a front panel that has to stay quiet.",
+    "img": "https://cdn.shopify.com/s/files/1/2116/5995/files/Mens_High_Split_Shorts_Crocodile_1.jpg?v=1773044637",
+    "source": "https://www.tatamifightwear.com/products/high-split-mma-shorts-crocodile",
+    "tags": ["black on black", "luxury material cue", "resolves close up", "quiet front"], "firstSeen": "2026-08-06"
+  },
+  {
+    "id": "F0806-30", "bucket": "05-mood", "lane": "bjj",
+    "territory": "luxury-streetwear", "class": "buildable", "score": 3, "tier": "sweep",
+    "title": "TVT001-7 SS Rash Guard — Red", "brand": "Shoyoroll",
+    "note": "Included deliberately as a floor marker. Plain red body, black raglan sleeves, small logo — no artwork at all. Shoyoroll can sell this on brand equity alone. Future Kimonos cannot, and the gap between this and the Kuniyoshi finds on this board is the whole argument for the premium bar.",
+    "img": "https://cdn.shopify.com/s/files/1/0100/7232/files/Red.jpg?v=1774373450",
+    "source": "https://shoyoroll.com/products/tvt001-7-ss-rash-guard",
+    "tags": ["floor marker", "no artwork", "brand equity only", "reject me"], "firstSeen": "2026-08-06"
+  }
+];
+
+</script>
+<script>
+const NAMES = {
+  "01-colour-palette":"Colour palette","02-font-type":"Font and type","03-pattern":"Pattern",
+  "04-light-dark-placement":"Light and dark placement","05-mood":"Mood","06-garment-layout":"Garment layout",
+  "07-theme":"Theme","08-standout-graphic":"Standout graphic","09-gradient-shape":"Gradients and shapes",
+  "10-graphics-pack":"Graphics pack and templates"
+};
+const LANES = {
+  "moto-mtb":"Moto / MTB / BMX", "cycling-tri":"Cycling / tri / running",
+  "football-teamwear":"Football / rugby / esports", "combat":"Combat sports",
+  "athlete":"Athletes", "bjj":"BJJ", "reference":"Reference artwork", "inbox":"Inbox"
+};
+const TERR = {
+  "neo-japanese":"Neo-Japanese / Bushido",
+  "cyberpunk-tech":"Cyberpunk / Neo Tokyo",
+  "luxury-streetwear":"Streetwear graphics",
+  "printmaking-remix":"Printmaking remix",
+  "motorsport-graphics":"Motorsport graphics",
+  "editorial-composition":"Editorial / minimalism"
+};
+/* Reject reasons. Keep this list short and mutually exclusive — the whole point is that
+   the collector can act on them. Adding a reason means adding a rule it can apply. */
+const REASONS = {
+  "plain":"Too plain",
+  "busy":"Too busy / no hierarchy",
+  "cheap":"Looks cheap / flat vector",
+  "generic":"Generic — seen everywhere",
+  "process":"Wrong process — not sublimated",
+  "womens":"Women's product",
+  "recolour":"Recolour, not a new design",
+  "offbrand":"Off-brand for FK",
+  "type":"Bad type",
+  "quality":"Image too poor to judge"
+};
+
+let who = localStorage.getItem("fk-who") || "ladana";
+const sKey = w => "fk-stars-v2-" + w;
+const rKey = w => "fk-rejects-v1-" + w;
+const pKey = w => "fk-peer-v1-" + w;   // the OTHER person's review, received via share link
+let stars   = new Set(JSON.parse(localStorage.getItem(sKey(who)) || "[]"));
+let rejects = new Map(Object.entries(JSON.parse(localStorage.getItem(rKey(who)) || "{}")));
+
+let fBucket = "all", fLane = "all", fTerr = "all", fStar = false, fNew = false,
+    fShowRej = false, fPeer = false, fTier = "all";
+
+/* ── Cross-device review sharing ────────────────────────────────────────────
+   localStorage is per-browser, so Ladana and James can never see each other's
+   marks on a static page. There is no backend and a GitHub Pages site cannot
+   write anywhere, so the review travels in the URL instead:
+
+     James reviews → "Share my review" → link with his marks encoded in the hash
+     → Ladana opens it → his marks merge into her board as peer marks.
+
+   Peer marks are read-only. They never overwrite your own stars or rejects. */
+function readPeer(){
+  try { return JSON.parse(localStorage.getItem(pKey(who)) || "null"); }
+  catch(e){ return null; }
+}
+let peer = readPeer();
+
+/* Shared reviews, fetched from the repo on load.
+   reviews.json holds one entry per reviewer, newest wins:
+     [ { "who":"james", "at":"2026-08-07", "s":[ids], "r":{id:reason} }, ... ]
+   This is what makes the board shared rather than per-browser. Writing back is
+   a commit — the export block below is the payload. */
+async function loadSharedReviews(){
+  try{
+    const r = await fetch("reviews.json?cb=" + Date.now(), {cache:"no-store"});
+    if(!r.ok) return;
+    const arr = await r.json();
+    if(!Array.isArray(arr)) return;
+    const mine  = arr.filter(x => x && x.who === who).pop();
+    const other = arr.filter(x => x && x.who && x.who !== who).pop();
+    /* Their marks become peer marks unless a newer share link is already stored. */
+    if(other && (!peer || (peer.at || "") <= (other.at || ""))){
+      peer = { w: other.who, at: other.at || "", s: other.s || [], r: other.r || {} };
+      localStorage.setItem(pKey(who), JSON.stringify(peer));
+    }
+    /* Your own marks are restored only if this browser has none — never overwrite
+       work in progress with an older commit. */
+    if(mine && stars.size === 0 && rejects.size === 0){
+      stars   = new Set(mine.s || []);
+      rejects = new Map(Object.entries(mine.r || {}));
+      save();
+    }
+    const el = document.getElementById("synced");
+    if(el) el.textContent = other
+      ? "synced · " + (other.who === "ladana" ? "Ladana" : "James") + "'s review from " + (other.at || "?")
+      : "synced · no review from the other reviewer yet";
+    render();
+  }catch(e){ /* running from a local file, or no reviews.json yet — fine */ }
+}
+
+function ingestShareLink(){
+  const m = location.hash.match(/^#r=(.+)$/);
+  if(!m) return;
+  try {
+    const data = JSON.parse(decodeURIComponent(escape(atob(decodeURIComponent(m[1])))));
+    if(!data.w || (data.w !== "ladana" && data.w !== "james")) return;
+    /* Store it under whichever reviewer is NOT the sender, so it shows up as
+       "their" marks no matter who opens the link. */
+    const viewer = data.w === "ladana" ? "james" : "ladana";
+    localStorage.setItem(pKey(viewer), JSON.stringify({
+      w: data.w, at: data.at || "", s: data.s || [], r: data.r || {}
+    }));
+    if(who !== viewer){ who = viewer; localStorage.setItem("fk-who", who); }
+    history.replaceState(null, "", location.pathname + location.search);
+    setTimeout(() => alert(
+      (data.w === "ladana" ? "Ladana" : "James") + "'s review loaded — " +
+      (data.s || []).length + " kept, " + Object.keys(data.r || {}).length + " rejected.\n\n" +
+      "Their marks show as a badge on each card. Yours are untouched."), 60);
+  } catch(e){ console.warn("Could not read share link", e); }
+}
+ingestShareLink();
+peer = readPeer();
+
+/* "Save my review" — produces the JSON line for reviews.json plus a share link.
+   Send either back to Claude, or paste the JSON straight into the repo file. */
+function saveBlock(){
+  const payload = { who, at: new Date().toISOString().slice(0,10),
+                    s: [...stars], r: Object.fromEntries(rejects) };
+  const enc = encodeURIComponent(btoa(unescape(encodeURIComponent(
+    JSON.stringify({ w: who, at: payload.at, s: payload.s, r: payload.r })))));
+  const o = document.getElementById("out");
+  o.style.display = "block";
+  o.value =
+    "MY REVIEW — " + (who === "ladana" ? "Ladana" : "James") + ", " + payload.at + "\n" +
+    stars.size + " kept · " + rejects.size + " rejected.\n\n" +
+    "Send this whole box to Claude and it goes into the shared board.\n\n" +
+    "--- reviews.json entry ---\n" +
+    JSON.stringify(payload) + "\n\n" +
+    "--- or open this link to merge into someone else's board ---\n" +
+    location.origin + location.pathname + "#r=" + enc + "\n";
+  o.select();
+  try { navigator.clipboard.writeText(o.value); } catch(e){}
+}
+
+function shareLink(){
+  const payload = { w: who, at: new Date().toISOString().slice(0,10),
+                    s: [...stars], r: Object.fromEntries(rejects) };
+  const enc = encodeURIComponent(btoa(unescape(encodeURIComponent(JSON.stringify(payload)))));
+  const url = location.origin + location.pathname + "#r=" + enc;
+  const o = document.getElementById("out");
+  o.style.display = "block";
+  o.value = "Send this link to " + (who === "ladana" ? "James" : "Ladana") +
+    ". Opening it merges your review into their board.\n\n" + url +
+    "\n\n(" + stars.size + " kept, " + rejects.size + " rejected, " +
+    Math.round(url.length/1024*10)/10 + "KB link)";
+  o.select();
+  try { navigator.clipboard.writeText(url); } catch(e){}
+}
+
+const WINDOW = (window.BOARD_META && BOARD_META.windowDays) || 30;
+const today = new Date();
+const ageDays = d => { const t = Date.parse(d); return isNaN(t) ? 999 : Math.floor((today - t) / 86400000); };
+const otherWho = () => who === "ladana" ? "james" : "ladana";
+
+/* Rolling window: unstarred finds age out after windowDays.
+   Anything starred by either reviewer stays for good. Rejected finds stay visible
+   only while "show rejected" is on — but they are never deleted, because the reject
+   list is the training signal. */
+function inWindow(f){
+  if (stars.has(f.id)) return true;
+  const other = new Set(JSON.parse(localStorage.getItem(sKey(otherWho())) || "[]"));
+  if (other.has(f.id)) return true;
+  if (peer && peer.s && peer.s.includes(f.id)) return true;  // kept by the other reviewer
+  return ageDays(f.firstSeen) <= WINDOW;
+}
+const peerName = () => peer ? (peer.w === "ladana" ? "Ladana" : "James") : "";
+const peerStarred  = id => !!(peer && peer.s && peer.s.includes(id));
+const peerRejected = id => !!(peer && peer.r && peer.r[id]);
+
+document.getElementById("who").value = who;
+document.getElementById("meta").textContent =
+  (BOARD_META.updated || "") + (BOARD_META.runLabel ? " — " + BOARD_META.runLabel : "");
+document.getElementById("note").textContent = BOARD_META.note || "";
+
+function setWho(){
+  who = document.getElementById("who").value;
+  localStorage.setItem("fk-who", who);
+  stars   = new Set(JSON.parse(localStorage.getItem(sKey(who)) || "[]"));
+  rejects = new Map(Object.entries(JSON.parse(localStorage.getItem(rKey(who)) || "{}")));
+  peer    = readPeer();
+  save(); render();
+}
+function save(){
+  localStorage.setItem(sKey(who), JSON.stringify([...stars]));
+  localStorage.setItem(rKey(who), JSON.stringify(Object.fromEntries(rejects)));
+  document.getElementById("tally").textContent =
+    stars.size + " starred · " + rejects.size + " rejected";
+}
+/* Starring and rejecting are mutually exclusive. Starring something clears its reject. */
+function toggleStar(id){
+  if(stars.has(id)) stars.delete(id);
+  else { stars.add(id); rejects.delete(id); }
+  save(); render();
+}
+function setReject(id, reason){
+  if(rejects.get(id) === reason) rejects.delete(id);
+  else { rejects.set(id, reason); stars.delete(id); }
+  save(); render();
+}
+function clearReject(id){ rejects.delete(id); save(); render(); }
+
+function buildFilters(){
+  const el = document.getElementById("filters");
+  const live = FINDS.filter(inWindow);
+  const laneCounts = {}, bucketCounts = {}, terrCounts = {};
+  live.forEach(f => {
+    laneCounts[f.lane] = (laneCounts[f.lane] || 0) + 1;
+    bucketCounts[f.bucket] = (bucketCounts[f.bucket] || 0) + 1;
+    if(f.territory) terrCounts[f.territory] = (terrCounts[f.territory] || 0) + 1;
+  });
+  /* Curated = passed the full premium bar. Sweep = the product half, shown
+     ungated so the reject buttons can teach the filter. */
+  const nSweep = live.filter(f => f.tier === "sweep").length;
+  let h = '';
+  if(nSweep){
+    h += '<span class="flabel">Tier</span>';
+    h += chip("all", fTier === "all", "tier", "All " + live.length);
+    h += chip("curated", fTier === "curated", "tier", "Curated " + (live.length - nSweep));
+    h += chip("sweep", fTier === "sweep", "tier", "Product sweep " + nSweep);
+    h += '<span style="flex-basis:100%;height:0"></span>';
+  }
+  h += '<span class="flabel">Territory</span>';
+  h += chip("all", fTerr === "all", "terr", "All");
+  Object.keys(TERR).forEach(t => {
+    if(!terrCounts[t]) return;
+    h += chip(t, fTerr === t, "terr", TERR[t] + " " + terrCounts[t]);
+  });
+  h += '<span style="flex-basis:100%;height:0"></span>';
+  h += '<span class="flabel">Lane</span>';
+  h += chip("all", fLane === "all", "lane", "All " + live.length);
+  Object.keys(LANES).forEach(l => {
+    if(!laneCounts[l]) return;
+    h += chip(l, fLane === l, "lane", LANES[l] + " " + laneCounts[l]);
+  });
+  h += '<span style="flex-basis:100%;height:0"></span>';
+  h += '<span class="flabel">Bucket</span>';
+  h += chip("all", fBucket === "all", "bucket", "All");
+  Object.keys(NAMES).forEach(b => {
+    if(!bucketCounts[b]) return;
+    h += chip(b, fBucket === b, "bucket", NAMES[b] + " " + bucketCounts[b]);
+  });
+  h += '<span style="flex-basis:100%;height:0"></span>';
+  h += chip("star", fStar, "flag", "★ Starred only");
+  h += chip("new", fNew, "flag", "New this week");
+  h += chip("rej", fShowRej, "flag", "Show rejected " + rejects.size);
+  if(peer) h += chip("peer", fPeer, "flag", peerName() + " kept " + (peer.s || []).length);
+  el.innerHTML = h;
+  el.querySelectorAll(".chip").forEach(c => c.onclick = () => {
+    const k = c.dataset.kind, v = c.dataset.val;
+    if(k === "lane") fLane = v;
+    else if(k === "bucket") fBucket = v;
+    else if(k === "terr") fTerr = v;
+    else if(k === "tier") fTier = v;
+    else if(v === "star") fStar = !fStar;
+    else if(v === "new") fNew = !fNew;
+    else if(v === "rej") fShowRej = !fShowRej;
+    else if(v === "peer") fPeer = !fPeer;
+    render();
+  });
+}
+function chip(val, on, kind, label){
+  return '<span class="chip' + (on ? " on" : "") + '" data-kind="' + kind +
+         '" data-val="' + val + '">' + label + '</span>';
+}
+
+function visible(){
+  return FINDS.filter(inWindow)
+    .filter(f => fShowRej || !rejects.has(f.id))
+    .filter(f => fLane === "all" || f.lane === fLane)
+    .filter(f => fBucket === "all" || f.bucket === fBucket)
+    .filter(f => fTerr === "all" || f.territory === fTerr)
+    .filter(f => fTier === "all" || (fTier === "sweep" ? f.tier === "sweep" : f.tier !== "sweep"))
+    .filter(f => !fStar || stars.has(f.id))
+    .filter(f => !fPeer || peerStarred(f.id))
+    .filter(f => !fNew || ageDays(f.firstSeen) <= 7);
+}
+
+function line(f){
+  let t = "\n- **" + f.title + "** — " + f.brand + "  \n";
+  t += "  id: " + f.id + " | lane: " + (LANES[f.lane] || f.lane) +
+       " | territory: " + (TERR[f.territory] || f.territory || "—") +
+       " | class: " + (f.class || "—") +
+       (f.score != null ? " | score: " + f.score + "/6" : "") +
+       " | first seen: " + f.firstSeen + "\n";
+  if(f.swatches) t += "  palette: " + f.swatches.map((s,i) =>
+    (f.swatchNames ? f.swatchNames[i] + " " : "") + s).join(", ") + "\n";
+  t += "  ingredient: " + f.note + "\n";
+  if(f.tags && f.tags.length) t += "  tags: " + f.tags.join(", ") + "\n";
+  t += "  source: " + f.source + "\n";
+  if(f.img) t += "  image: " + f.img + "\n";
+  /* Where both reviewers have marked the same find, say so — agreement and
+     disagreement are both stronger signals than one person's opinion. */
+  if(peerStarred(f.id))  t += "  " + peerName() + ": KEPT\n";
+  if(peerRejected(f.id)) t += "  " + peerName() + ": REJECTED — " +
+    (REASONS[peer.r[f.id]] || peer.r[f.id]) + "\n";
+  return t;
+}
+
+function picks(){
+  const kept = FINDS.filter(f => stars.has(f.id));
+  const rej  = FINDS.filter(f => rejects.has(f.id));
+  const name = who === "ladana" ? "Ladana" : "James";
+  let txt = "# Board review — " + name + " — " + new Date().toISOString().slice(0,10) + "\n\n" +
+            kept.length + " kept · " + rej.length + " rejected.\n";
+  if(peer){
+    const bothKept = kept.filter(f => peerStarred(f.id)).map(f => f.id);
+    const split    = kept.filter(f => peerRejected(f.id)).map(f => f.id);
+    txt += "\nIncludes " + peerName() + "'s review from " + (peer.at || "an earlier session") + ".\n";
+    if(bothKept.length) txt += "Both kept: " + bothKept.join(", ") + "\n";
+    if(split.length)    txt += "Disagreed (" + name + " kept, " + peerName() +
+                               " rejected): " + split.join(", ") + "\n";
+  }
+
+  txt += "\n\n# KEEP\n";
+  if(!kept.length) txt += "\nNothing starred.\n";
+  else Object.keys(NAMES).forEach(b => {
+    const items = kept.filter(f => f.bucket === b);
+    if(!items.length) return;
+    txt += "\n## " + NAMES[b] + "\n";
+    items.forEach(f => { txt += line(f); });
+  });
+
+  txt += "\n\n# REJECT\n";
+  if(!rej.length) txt += "\nNothing rejected.\n";
+  else {
+    /* Grouped by reason, because the reason is the rule the collector has to learn.
+       Three rejects sharing a reason is a pattern, not three opinions. */
+    Object.keys(REASONS).forEach(r => {
+      const items = rej.filter(f => rejects.get(f.id) === r);
+      if(!items.length) return;
+      txt += "\n## " + REASONS[r] + "  (" + items.length + ")\n";
+      items.forEach(f => { txt += line(f); });
+    });
+  }
+
+  txt += "\n---\nPaste this whole thing back into Claude. Keeps become keeper cards and " +
+         "direction sheets; rejects are written into REJECTS.md and become filter rules " +
+         "the collector applies on the next run.\n";
+
+  const o = document.getElementById("out");
+  o.style.display = "block"; o.value = txt; o.select();
+  try { navigator.clipboard.writeText(txt); } catch(e){}
+}
+
+function render(){
+  buildFilters();
+  const list = visible();
+  const byB = {};
+  list.forEach(f => (byB[f.bucket] = byB[f.bucket] || []).push(f));
+  const el = document.getElementById("board");
+  el.innerHTML = "";
+  Object.keys(NAMES).forEach(b => {
+    const items = byB[b];
+    if(!items || !items.length) return;
+    const h = document.createElement("h2");
+    h.innerHTML = NAMES[b] + '<span class="bcount">' + items.length + '</span>';
+    el.appendChild(h);
+    const g = document.createElement("div");
+    g.className = "grid";
+    items.forEach(f => {
+      const isRej = rejects.has(f.id);
+      const c = document.createElement("div");
+      c.className = "card" + (stars.has(f.id) ? " starred" : "") + (isRej ? " rejected" : "");
+      let visual;
+      if(f.swatches){
+        visual = '<div class="sw">' + f.swatches.map(s =>
+          '<div style="background:' + s + '"></div>').join("") + '</div>';
+      } else {
+        visual = '<img class="thumb" loading="lazy" alt="' + f.title +
+          '" src="' + f.img + '" onerror="this.style.opacity=.25">';
+      }
+      const hex = f.swatches
+        ? '<div class="hex">' + f.swatches.map((s,i) =>
+            (f.swatchNames ? f.swatchNames[i] + " " : "") + s).join(" · ") + '</div>'
+        : "";
+      const tags = (f.tags || []).map(t => '<span class="tag">' + t + '</span>').join("");
+      const isNew = ageDays(f.firstSeen) <= 1;
+      const clsBadge = f.class === "reference"
+        ? '<span class="cls" style="background:var(--ref)">reference</span>'
+        : '<span class="badge">' + (LANES[f.lane] || f.lane) + '</span>';
+      const terrBadge = f.territory
+        ? '<span class="terr">' + (TERR[f.territory] || f.territory) + '</span>' : '';
+      const scoreBadge = f.score != null
+        ? '<span class="scr">' + f.score + '/6' + (f.tier === "sweep" ? ' · sweep' : '') + '</span>' : '';
+      const peerBadge = peerStarred(f.id)
+        ? '<span class="peer star">★ ' + peerName() + '</span>'
+        : (peerRejected(f.id)
+            ? '<span class="peer rejd">✕ ' + peerName() + ' — ' + (REASONS[peer.r[f.id]] || peer.r[f.id]) + '</span>'
+            : '');
+      const reasonChips = Object.keys(REASONS).map(r =>
+        '<span class="rc' + (rejects.get(f.id) === r ? " on" : "") +
+        '" data-r="' + r + '">' + REASONS[r] + '</span>').join("");
+
+      c.innerHTML =
+        '<div class="vwrap">' + visual + clsBadge + terrBadge +
+        (isNew ? '<span class="newdot">new</span>' : '') + scoreBadge + '</div>' +
+        (isRej ? '<div class="rlabel">Rejected — ' + REASONS[rejects.get(f.id)] + '</div>' : '') +
+        peerBadge +
+        '<div class="body"><div class="t">' + f.title + '</div>' +
+        '<div class="b">' + f.brand + '</div>' + hex +
+        '<div class="n">' + f.note + '</div>' +
+        '<div class="tags">' + tags + '</div></div>' +
+        '<div class="foot">' +
+          '<button class="star' + (stars.has(f.id) ? " on" : "") +
+            '" title="Keep this">' + (stars.has(f.id) ? "★" : "☆") + '</button>' +
+          '<button class="rej' + (isRej ? " on" : "") + '" title="Reject this">✕</button>' +
+          '<a href="' + f.source + '" target="_blank" rel="noopener">source</a>' +
+          '<span class="seen">' + f.firstSeen + '</span>' +
+        '</div>' +
+        '<div class="why' + (isRej ? " open" : "") + '">' + reasonChips + '</div>';
+
+      c.querySelector(".star").onclick = () => toggleStar(f.id);
+      c.querySelector(".rej").onclick = () => {
+        const why = c.querySelector(".why");
+        if(isRej) clearReject(f.id);          // already rejected → un-reject
+        else why.classList.toggle("open");    // otherwise reveal the reason chips
+      };
+      c.querySelectorAll(".rc").forEach(chip =>
+        chip.onclick = () => setReject(f.id, chip.dataset.r));
+      g.appendChild(c);
+    });
+    el.appendChild(g);
+  });
+  if(!list.length) el.innerHTML = '<p class="empty">Nothing matches these filters.</p>';
+}
+render(); save(); loadSharedReviews();
+</script>
+</body>
+</html>
