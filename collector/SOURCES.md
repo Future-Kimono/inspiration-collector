@@ -52,16 +52,19 @@ This is not bureaucracy. A find whose origin has been lost cannot be verified, c
 
 ## Lane weighting
 
-| Share of daily finds | Lane |
+**A run is 20–30 findings** (`PURPOSE.md`). This is roughly how they should be spread — a shape, not a quota.
+
+| Rough share of a run | Lane |
 |---|---|
-| ~3 of 8 | Lane 1 — motorsport, MX, MTB, cycling |
-| ~2 of 8 | Lane 2 — combat sports beyond BJJ |
-| ~2 of 8 | Lane 3 — reference-class artwork in the five territories |
-| ~1 of 8 | Lane 4 — athletes |
-| 0–1 | Lane 5 — BJJ competitors, new series only |
+| ~a quarter | Lane 3 — reference-class artwork across the six territories |
+| ~a fifth | Lane 1 — motorsport, MX, MTB, cycling |
+| ~a fifth | Lane 5 — BJJ competitors, incl. 5b event-led, 5c collab, 5d retailer. **Venum every run** |
+| ~a sixth | Lane 2 — combat sports beyond BJJ |
+| ~a tenth | Lane 4 — athletes |
+| ~a third of the run | **Exploration** — ~2 wildcards + ~1 seed chased (`SEEDS.md`). Overlaps the lanes above |
 | written only | Lanes 6–7 — macro direction, consumer voice |
 
-**Eight is a ceiling, not a quota.** Four excellent finds beats eight adequate ones. An empty lane with an honest explanation beats a padded one.
+**These are proportions, not slots.** Twenty-two good findings beats thirty padded ones, and an empty lane with an honest explanation beats a filled one. The two negative musts above outrank this table: no brand over ~4, no source method over about a third.
 
 ---
 
