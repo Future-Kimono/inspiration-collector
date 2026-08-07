@@ -52,7 +52,7 @@ far more than one where you shrug at everything.
 
 ### 3. Send your review back
 
-When you're done, press **Save my review** at the top. A box appears with your picks in it,
+When you're done, press **Copy** at the top. A box appears with your picks in it,
 already copied to your clipboard.
 
 **Paste that box into Slack or email and send it back.** That's what feeds it into the
@@ -122,6 +122,6 @@ soon as you're back on a connection.
 
 1. Open the link
 2. Star the good, reject the bad **with a reason**
-3. Press **Save my review** and send the box back
+3. Press **Copy** and send the box back
 
 That's the whole job. Everything else happens behind it.
