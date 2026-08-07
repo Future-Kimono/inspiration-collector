@@ -78,8 +78,9 @@
   @media(max-width:700px){.grid{grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}}
 
   .card{position:relative;display:grid;
-    grid-template-rows:210px auto 1fr auto auto;   /* fixed rows = equal heights */
-    height:388px;overflow:hidden;
+    grid-template-rows:200px auto minmax(0,1fr) auto auto;  /* minmax(0,1fr) stops the
+       flexible row overflowing and clipping the note box below it */
+    height:404px;overflow:hidden;
     background:var(--card);border:1px solid var(--line);border-radius:3px;
     transition:border-color .15s}
   .card:hover{border-color:var(--muted)}
@@ -110,7 +111,8 @@
   .kicker{font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);
     padding:7px 12px 0}
   .kicker b{color:var(--accent);font-weight:400}
-  .note{font-size:11.5px;line-height:1.5;color:var(--muted);padding:7px 12px 0;overflow:hidden;
+  .mid{min-height:0;overflow:hidden}
+  .note{font-size:11.5px;line-height:1.5;color:var(--muted);padding:6px 12px 0;overflow:hidden;
     display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical}
 
   /* action row — always visible, never moves */
@@ -930,7 +932,7 @@ function cardHTML(f){
     +   '<div class="marks">'+marks+'</div></div>'
     + '<div class="head"><div class="ttl serif">'+esc(f.title)+'</div>'
     +   '<div class="by">'+esc(f.brand)+'</div></div>'
-    + '<div><div class="kicker"><b>'+esc(TERR[f.territory]||"—")+'</b> · '+esc(NAMES[f.bucket]||f.bucket)+'</div>'
+    + '<div class="mid"><div class="kicker"><b>'+esc(TERR[f.territory]||"—")+'</b> · '+esc(NAMES[f.bucket]||f.bucket)+'</div>'
     +   '<div class="note">'+esc(f.note)+'</div>'
     +   (pN ? '<div class="peernote">'+esc(peerName())+': “'+esc(pN)+'”</div>' : '')+'</div>'
     + '<div class="acts">'
