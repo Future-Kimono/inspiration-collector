@@ -345,3 +345,31 @@ Describing a mood returns stock imagery.
 **Add to `SOURCES.md` as a standing method once it has produced a second good run** — one
 success is not yet a pattern, and the rules in this system are supposed to earn their place.
 Ladana's own result is the first data point and it was a strong one.
+
+### S23 — Calligraffiti / brush handstyle lettering
+
+Ladana, 7 Aug 2026, filed as `F0807-24`. **The tradition has a name and it is searchable** —
+another use of the S22 method.
+
+**Calligraffiti**: chisel-brush lettering where a flat brush held at a constant angle gives
+thick downstrokes and hairline crosses, with hard angular terminals rather than round ones.
+Sits between graffiti handstyle and formal calligraphy. Searchable: `calligraffiti` ·
+`brush handstyle` · `chisel tip lettering` · `Niels Shoe Meulman` · `blackletter graffiti`.
+
+**Three mechanics worth taking:**
+1. **Letters interlock and share edges**, so the block reads as one mass before it reads as
+   words. That is a graphic, not a caption.
+2. **Strokes overshoot the block** and cut across neighbouring lines, which is what stops it
+   looking like a font.
+3. **White on a scraped dark ground with drip texture** — the same scraped-ground mechanic as
+   Ladana's calligraphy picks.
+
+**Why it matters here:** it is the Latin-alphabet cousin of the Zen scroll (`F0807-20`) and of
+her Arabic references. Same flat-brush logic, different alphabet — which means **Concept 3
+(ONE STROKE) could be built in English rather than Japanese** and keep the same mechanics.
+That removes the culture risk entirely and opens the "Earn The Glory" line as artwork rather
+than as a tagline.
+
+**⚠️ The specific image is watermarked stock art.** Filed for the *style*, never to be traced
+or reproduced. If this direction is built, it needs original lettering — either drawn, or a
+licensed typeface. The mechanic is free; that artwork is not.

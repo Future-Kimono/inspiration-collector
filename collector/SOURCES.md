@@ -187,11 +187,21 @@ Capped at roughly one visual find a day, and **only for a genuinely new design s
 **Blocked to `web_fetch`:** vhtsny.com, gymshark.com.
 **Correction, 7 Aug 2026:** hayabusafight.com was listed here as blocked. It is not — it returns 250 products from the browser. It is excluded by Ladana's instruction, not by a technical limit. Keeping a false reason on record would mislead a future decision.
 
-### Venum — added 7 Aug 2026
+### Venum — PERMANENT SOURCE, promoted 7 Aug 2026
 
-`https://row.venum.com/products.json?limit=250` — **250 products, 69 rash guards and shorts.** Confirmed live from the browser.
+`https://row.venum.com/products.json?limit=250` — **250 products, 69 rash guards and shorts.** Confirmed live from the browser. **Sweep every run.**
 
-Ladana's route to it is the point: she searched UFC athletes, saw what they compete in, and arrived at the brand. It is UFC's exclusive outfitter, so its catalogue is the single largest body of rash guard design built to one brief anywhere. Closest aesthetic match to Future Kimonos in the register.
+**Why it earns permanent status, in Ladana's words:** *"Venum should be a good source reference — they have 1.7 million followers on Instagram, I think they have a strong influence on consumers adopting their rashguard styles."*
+
+That is the right argument, and it is a different one from "their designs are good". Venum is **UFC's exclusive outfitter**, so its kit is worn by the athletes Future Kimonos' customers already look to, on the biggest stage the sport has. Reach at that scale does not just reflect taste — **it sets the baseline of what a rash guard is expected to look like.** Watching Venum is watching the reference point the customer is unconsciously comparing every other rash guard against.
+
+**Track two separate things:**
+1. **What they are shipping** — the design itself.
+2. **What becomes normal because they shipped it.** A mechanic appearing on a UFC card is a mechanic the market will read as current within a season. Note when something crosses that line.
+
+**Earned on evidence, not assertion.** Of Ladana's five kept product finds so far, **four are Venum**: the desert camo, UFC 288 black and gold, the Matupa snake print, and the khaki Stealth kit. No other brand has produced more than one keeper.
+
+**⚠️ The brand cap still applies.** Venum is capped at ~4 finds per run like everything else, and for a specific reason: it is the closest aesthetic match in the register, which makes it the single most likely source of convergence. A board that is 60% Venum would look excellent and teach nothing. If the cap starts biting every run, say so in the brief — that is itself a finding about how far ahead they are.
 
 ---
 
