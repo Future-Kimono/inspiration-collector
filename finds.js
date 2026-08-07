@@ -491,5 +491,49 @@ window.FINDS = [
     "source": "https://www.vectorstock.com/royalty-free-vector/56215228",
     "tags": ["calligraffiti", "chisel brush", "interlocking letters", "overshooting strokes", "reads as mass first"],
     "firstSeen": "2026-08-07"
+  },
+
+  {
+    "id": "F0807-25", "bucket": "08-standout-graphic", "lane": "reference",
+    "territory": "luxury-streetwear", "class": "reference", "score": 6, "wildcard": false,
+    "title": "Abstract horse built from interlacing ribbon", "brand": "Pngtree stock (watermarked preview) \u2014 supplied by Ladana",
+    "note": "LADANA: found by searching ABSTRACT HORSE \u2014 the abstract-art lens (S25). The mechanic: the animal is not drawn and then decorated, it is CONSTRUCTED ENTIRELY OUT OF ONE REPEATED ELEMENT \u2014 flat interlacing ribbon with a lit edge and a shadowed edge, so every strap reads as a physical band. There is no outline to fill; figure and ornament are the same thing. Palette is three values of one hue \u2014 cream, tan, mid-brown \u2014 on pure black, so the black does the negative-space work and the ribbon carries all the detail. Ribbon density grades: dense and knotted at the chest and shoulder, opening to near-empty at the legs, which is a body-composition move. Note the same construction logic as the Celtic zoomorphs (F0807-26, F0807-27) a thousand years apart.",
+    "img": "refs/L09-abstract-line-horse.png",
+    "source": "https://pngtree.com/",
+    "tags": ["abstract art", "ribbon interlace", "built from one element", "tonal monochrome", "density grading", "black ground"],
+    "firstSeen": "2026-08-07"
+  },
+
+  {
+    "id": "F0807-26", "bucket": "03-pattern", "lane": "reference",
+    "territory": "printmaking-remix", "class": "reference", "score": 6, "wildcard": false,
+    "title": "Celtic triple-horse roundel \u2014 rotational knotwork", "brand": "Celtic knotwork motif (modern vector redrawing) \u2014 supplied by Ladana",
+    "note": "LADANA: found via MYTHOLOGY SYMBOLS FOR HORSES \u2014 the mythology lens (S24). Three mechanics worth taking. 1) ROTATIONAL SYMMETRY: three identical horses at 120\u00b0 fill a circle completely, each one's hindquarters becoming the next one's shoulder \u2014 a repeat that has no seam and no top. 2) THE FIGURES ARE THE NEGATIVE SPACE: solid white bodies against black, with the knotwork occupying the gaps between them rather than sitting on top \u2014 so figure and pattern swap roles depending on where you look. 3) The limbs terminate in SPIRALS AND TENDRILS that leave the body and become pure ornament, which is what stops it reading as an animal drawing. Two-colour, hard-edged, no tonal information \u2014 built for a chest roundel or a back medallion at any size.",
+    "img": "refs/L10-celtic-triple-horse-roundel.png",
+    "source": "https://www.google.com/search?q=celtic+horse+symbol+mythology",
+    "tags": ["celtic knotwork", "rotational symmetry", "figure-ground swap", "roundel", "two-colour", "seamless repeat"],
+    "firstSeen": "2026-08-07"
+  },
+
+  {
+    "id": "F0807-27", "bucket": "08-standout-graphic", "lane": "reference",
+    "territory": "neo-japanese", "class": "reference", "score": 5, "wildcard": false,
+    "title": "Celtic zoomorphic horse in hammered metal", "brand": "Redbubble artist \u2014 nanengen2 (watermark legible in image)",
+    "note": "LADANA: the craft-and-material lens (S24) \u2014 the same knotwork motif rendered as METALWORK rather than line, and the material does all the styling. Mechanics: 1) every band carries a HAMMERED/PLANISHED SURFACE with a bevelled edge and a dark inner line, so a flat shape reads as a raised casting; 2) the body is ONE CONTINUOUS BAND that leaves the neck, becomes the foreleg, knots through itself and returns as the tail \u2014 traceable end to end with a finger; 3) the mane is a stack of PARALLEL BLADES of graduated length, a rhythm device, not hair. Palette is a single pale gold worked in value only. Closest reference in the system to Ladana's gold-as-line keeps (UFC 288) but built from texture rather than a stroke.",
+    "img": "refs/L11-celtic-zoomorphic-horse.png",
+    "source": "https://www.redbubble.com/people/nanengen2/shop",
+    "tags": ["celtic zoomorph", "metalwork texture", "continuous band", "bevelled edge", "gold monochrome", "graduated blades"],
+    "firstSeen": "2026-08-07"
+  },
+
+  {
+    "id": "F0807-28", "bucket": "03-pattern", "lane": "combat",
+    "territory": "luxury-streetwear", "class": "buildable", "score": 6, "wildcard": false,
+    "title": "Caiman croc-hide rash guard \u2014 khaki/black", "brand": "Wicked One (via Khun Pon, \u20ac53)",
+    "note": "LADANA: 'i like the croc skin print'. Opened and inspected at full zoom \u2014 this is a REAL HIDE SCAN, not a vector scale tile: each scute carries its own tonal gradient, a soft shadow in the seam and a slight sheen difference, and the SCALE SIZE GRADES ACROSS THE BODY \u2014 large plates down the centre chest, tightening to small scales at the flanks. That grading is the whole trick: the texture is scaled to the torso rather than tiled flat, so it reads as a hide the garment was cut from. Palette is one family only \u2014 olive-khaki resolving to black at the sleeves and side panels, no accent colour anywhere. Branding is flat greyscale sitting ON the texture, so the roundel and wordmark read as STAMPS PRESSED INTO HIDE. Micro-type runs the top and bottom hems against logos many times its size. Plain black side panels and underarm gussets give negative space by MATERIAL rather than by emptiness. Direct evidence for the HIDE concept in CONCEPTS.md.",
+    "img": "https://www.khunpon.de/media/a7/94/e4/1762811543/wicked-one-rashguard-s-s-caiman-khaki-schwarz.jpg",
+    "source": "https://www.khunpon.de/en/clothing/fitness/compression-shirts/wicked-one-rashguard-s-s-caiman-khaki-black",
+    "tags": ["croc hide", "photographic texture", "scale grading", "tonal monochrome", "logo as stamp", "micro-type hem", "negative space by material"],
+    "firstSeen": "2026-08-07"
   }
 ];

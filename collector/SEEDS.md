@@ -381,3 +381,85 @@ than as a tagline.
 **⚠️ The specific image is watermarked stock art.** Filed for the *style*, never to be traced
 or reproduced. If this direction is built, it needs original lettering — either drawn, or a
 licensed typeface. The mechanic is free; that artwork is not.
+
+---
+
+## S24 — Expansion tactics: how one idea becomes twenty
+
+**Ladana, 7 August 2026. This is a method, not a subject — treat it as the most important
+entry in this file.**
+
+She wanted a Year of the Horse concept. She did **not** search "horse rash guard", which would
+have returned horse clip-art on jerseys. She searched **"mythology symbols for horses"** and
+got Celtic knotwork zoomorphs. Then she searched **"abstract horse"** and got a completely
+different thing again — a figure built from interlacing ribbon.
+
+Same subject. Different **lens**. Utterly different visual tradition each time.
+
+> **The subject is disposable. The lens is the technique.**
+> Horses were the example, not the assignment. **Do not go and research horses.**
+
+### The lenses
+
+When a concept lands, do not go looking for more of the same thing. Run it through two or three
+of these instead. Each one returns a different centuries-old visual tradition that has already
+solved the problem.
+
+| Lens | Search shape | What it returns that a plain search will not |
+|---|---|---|
+| **Mythology & folklore** | `mythology symbols for <x>` · `<culture> myth <x>` | Symbol systems built to be read at a glance — already stylised, already graphic |
+| **Ancient & archaeological** | `<culture> ornament` · `<era> motif` · museum open-access | Line, border and repeat logic refined over centuries. Public domain, and citable |
+| **Abstract art** | `abstract <x>` · `<x> line art` · `constructivist <x>` | The subject reduced to gesture and interlace — hits the "no clip-art" bar automatically |
+| **Calligraphy & lettering** | `<script> calligraphy` · `calligraffiti` · `sumi-e` | Stroke, weight and rhythm. Turns a subject into type, or type into a subject |
+| **Cultural symbol systems** | `<culture> symbols` · `<culture> textile pattern` | Palette and pattern grammar tied to a place — feeds the country-editions idea (S19) |
+| **Natural science & anatomy** | `<x> skeleton` · `<x> hide` · `scientific illustration` | Structure and real surface texture instead of a cartoon of the thing |
+| **Craft & material** | `<x> in metalwork / woodblock / ceramic / inlay` | The material does the styling. Where the metallic Celtic horse came from |
+| **Motorsport & technical** | `<x> livery` · `technical diagram <x>` | Geometry, numbering and sponsor hierarchy applied to a soft subject |
+
+### How to use it in a run
+
+1. **Expand, don't repeat.** A kept find is a starting point. Take its *subject* and push it
+   through two lenses it has not been through, then file what comes back.
+2. **The lens works with no subject at all.** `celtic knotwork` on its own is a find. So is
+   `constructivist poster`. A lens is a standing search, not a modifier.
+3. **Cross the lenses with the ingredient buckets.** Celtic knotwork × the croc-hide texture is
+   a different garment from Celtic knotwork × gold-as-line. That crossing is the parts-bin
+   principle doing real work.
+4. **Say which lens produced each find** in the brief. That is what makes this repeatable
+   instead of lucky.
+5. **Ancient and mythological material is usually out of copyright, but a modern drawing of it
+   is not.** Cite the specific rendering. See the caution below.
+
+### ⚠️ Two cautions
+
+**Cultural symbols carry meaning.** Celtic knotwork is decorative and safe. Many symbol systems
+are not — religious scripts, indigenous designs, tribal marks and heraldry all have owners or
+sacred status. Same caution already written into S21 for Arabic calligraphy. **Flag it in the
+note; never quietly file it.**
+
+**Public-domain motif ≠ public-domain image.** A 9th-century knot is free. A 2019 vector
+redrawing of it is somebody's artwork. When a lens returns modern renderings of ancient
+material, take the *mechanic* and commission the drawing.
+
+---
+
+## S25 — Abstract art as a standing lens
+
+**Ladana, 7 August 2026, filed as `F0807-25`.** Called out separately because it clears the
+premium bar almost by construction.
+
+A literal illustration of a subject risks looking like clip-art. **An abstract treatment cannot** —
+it is a drawn asset by definition (premium test 3), it forces a decisive palette (test 2), and
+it usually arrives with real negative space (test 5).
+
+Searchable: `abstract <subject>` · `<subject> line art` · `continuous line <subject>` ·
+`ribbon interlace` · `constructivist <subject>` · `geometric abstraction` · `suprematism` ·
+`gestural abstraction`.
+
+**The mechanic in her own example:** the animal is not drawn and then decorated. It is
+*constructed entirely out of one repeated element* — flat interlacing ribbon — so the figure
+and the ornament are the same thing. There is no outline to fill in. That is exactly how the
+Celtic zoomorphs work too, a thousand years earlier, which is why the two sit together.
+
+**Why this matters for sublimation:** ribbon interlace is bold, high-contrast and large-scale,
+which is precisely what survives on 160–220 GSM poly-spandex. Fine hairline abstraction does not.

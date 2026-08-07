@@ -50,6 +50,32 @@ This is not bureaucracy. A find whose origin has been lost cannot be verified, c
 
 ---
 
+## The seven directions — a breadth check, not a filter
+
+**Ladana, 7 August 2026:** *"more general ideas for direction is — fightwear, streetwear, tattoo
+culture, Japanese imagery, motorsport, gaming/anime, and contemporary graphic design."*
+
+| Direction | Where it already lives |
+|---|---|
+| **Fightwear** | Lanes 2, 5, 5b — Venum, Khun Pon, event kit |
+| **Streetwear** | `luxury-streetwear` territory — ACRONYM, Cav Empt, WTAPS, Nike ISPA |
+| **Tattoo culture** | Irezumi, blackwork, illustrative artists. **Under-served — compositions fitted to a body, which is the same problem** |
+| **Japanese imagery** | `neo-japanese` + `printmaking-remix`. The house strength |
+| **Motorsport** | Lane 1 + `motorsport-graphics` |
+| **Gaming / anime** | Lane 5c collabs. **Thinnest coverage in the system** |
+| **Contemporary graphic design** | Lane 3 — posters, editorial, album art, packaging |
+
+**How to use this:** it is a **checklist against narrowness, never a quota and never a
+whitelist.** At the end of a run, look at what the findings cover. If five directions are empty
+two runs running, the search has gone narrow — widen it and say so in the brief. A find that
+fits none of the seven is not disqualified; the seven are a floor on breadth, not a fence.
+
+Cross-reference `SEEDS.md` **S24** — any of these seven can be pushed through the expansion
+lenses. *Tattoo culture × mythology* and *gaming/anime × ancient ornament* are both unexplored
+and both cheap to test.
+
+---
+
 ## Lane weighting
 
 **A run is 20–30 findings** (`PURPOSE.md`). This is roughly how they should be spread — a shape, not a quota.
@@ -245,6 +271,23 @@ This is the accident that found Venum, made repeatable. A retailer that carries 
 **What to capture:** brand names not already in this register, then assess each on its own. **The retailer is a directory, not a source** — never file a retailer listing image as a find. Go to the brand, verify the product, take the image from there.
 
 **Also useful:** what a retailer chooses to feature, and what is discounted. Both are demand signals a brand's own feed will never show you.
+
+#### Khun Pon — standing retailer, added 7 Aug 2026 at Ladana's instruction
+
+`https://www.khunpon.de/en/clothing/mma/mma-rashguards/?p=2&order=neueste-zuerst`
+
+German fightwear stockist, multi-brand, **sortable newest-first** — which is the part that
+matters. Most retailers cannot be sorted by recency, so this one behaves like a dated feed
+across thirty labels at once. Walk pages 1–3 on the newest-first sort each run.
+
+**Why Ladana added it:** it surfaced Wicked One, a label absent from this register entirely,
+via the Caiman croc-hide rash guard (`F0807-28`) — exactly the "brands nobody would have
+thought to search for" case Lane 5d exists for.
+
+**Handling:** `web_fetch` works, but product images are worth opening in Chrome — the texture
+detail that separates a real hide scan from a flat vector tile is invisible at listing size.
+The lane rule still holds: verify on the brand's own site where one exists, and never file the
+retailer's listing thumbnail.
 
 ## Lane 6 — Print, colour and macro direction (written, no images)
 
