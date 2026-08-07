@@ -63,6 +63,10 @@ These are earned rules. Each one traces back to rejections below.
 | 7 | No caps, headwear or gis | Round 1 |
 | 8 | No republished or recoloured SKU presented as a new drop | Round 2 — FUJI, Kingz, Tatami, FK |
 | 9 | Nothing scoring 3 or below on the premium bar reaches the board, in any lane | Round 2 |
+| 10 | **MX product sweep must clear the texture test (premium test 4) explicitly.** Flat vector fills with no tonal information do not qualify from `moto-mtb` | Run 4 — 6 `cheap`, all `motorsport-graphics`/`moto-mtb`, 5 of 6 Fasthouse |
+| 11 | **No BJJ product whose only design event is a wordmark or a base colour.** `bjj` lane, sweep-grade product only | Run 4 — 5 `plain`, 3 in `bjj` |
+| 12 | **Americana / collegiate / basketball-jersey styling is off-brand.** Scoped to that styling, not to the brands that made it | Run 4 — 5 `offbrand`, 3 Gold BJJ (Canarinho, Finest City, All-American) |
+| 13 | Crowded multi-figure ukiyo-e with no dominant element. **Single-figure and landscape prints are unaffected and keep well** | Run 4 — 2 `busy`, both multi-figure Met prints |
 
 ---
 
@@ -72,6 +76,11 @@ Newest first. `Reason` uses the board's chip vocabulary so it stays groupable.
 
 | Date | Find | Brand | Reason | Note |
 |---|---|---|---|---|
+| 2026-08-07 | 6 MX jerseys (Fasthouse ×5, Troy Lee ×1) | Fasthouse, Troy Lee | `cheap` | Flat vector, no tonal information. **Scoped to MX product sweep — the motorsport lane stays open**, and the Troy Lee Jersey Myth colourway was kept in the same run |
+| 2026-08-07 | 5 plain garments | Shoyoroll, Gold BJJ, Troy Lee, Venum | `plain` | Base colour or wordmark as the only design event |
+| 2026-08-07 | 5 off-brand | Gold BJJ ×3, Troy Lee, The Met | `offbrand` | Americana/collegiate styling. One Met shaffron also off-brand |
+| 2026-08-07 | 3 generic | Troy Lee, Fasthouse, Venum×UFC | `generic` | Seen-everywhere motorsport graphics |
+| 2026-08-07 | 2 crowded ukiyo-e | The Met | `busy` | Multi-figure compositions, no dominant element |
 | 2026-08-06 | All 41 finds, run 2 | mixed | `generic` / `plain` | Board rejected wholesale. 36 of 41 were BJJ product listings in the lowest-weighted lane. Archived to `board/finds.archive-2026-08-06-run2.js` |
 | 2026-08-06 | Contrast — mint and white | Tatami | `plain` | Two-tone colour block. Passes construction, fails every premium test |
 | 2026-08-06 | Contrast — mint and black | Tatami | `plain` | Same block, second colourway |

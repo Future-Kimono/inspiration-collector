@@ -221,6 +221,14 @@ Capped at roughly one visual find a day, and **only for a genuinely new design s
 | FUJI Sports | `https://www.fujisports.com/products.json` | Licensed collabs. Republished its whole catalogue 3 Aug 2026 — treat with suspicion |
 | Future Kimonos (own) | `https://www.futurekimonos.com/products.json` | Baseline. 208 rash guards — check before proposing anything |
 
+**Blocked — image hotlinking, added 7 Aug 2026:** **Art Institute of Chicago** (`api.artic.edu`).
+The API is excellent and returns clean public-domain metadata, but `www.artic.edu/iiif/...`
+refuses cross-origin image requests, so **nothing from AIC can render on the board.** Confirmed
+on 14 images at two sizes. Use it for research if useful; never file a find from it.
+**Working museum sources:** Cleveland Museum of Art (`openaccess-api.clevelandart.org`, CC0,
+hotlinks fine — 8 finds in run 5) and The Met. Wikimedia Commons also hotlinks fine via
+`Special:FilePath/<name>?width=1200`, and returns a licence string worth recording in the note.
+
 **Blocked to `web_fetch`:** vhtsny.com, gymshark.com.
 **Correction, 7 Aug 2026:** hayabusafight.com was listed here as blocked. It is not — it returns 250 products from the browser. It is excluded by Ladana's instruction, not by a technical limit. Keeping a false reason on record would mislead a future decision.
 
