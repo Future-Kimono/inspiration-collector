@@ -436,8 +436,12 @@ const otherWho = () => who === "ladana" ? "james" : "ladana";
    over: two runs on the same day were indistinguishable, and a find stayed
    NEW for a week. Every find now carries an explicit run number, and NEW
    means EXACTLY ONE THING — it came from the most recent run. */
-const LATEST_RUN = FINDS.reduce((m,f) => Math.max(m, f.run||0), 0);
-const isNew = f => (f.run||0) === LATEST_RUN;
+/* Computed lazily and memoised. It must NOT read FINDS at load time — finds.js is
+   injected by the cache-busting loader and does not exist yet when this line runs. */
+let _latestRun = null;
+const LATEST_RUN = () => (_latestRun !== null ? _latestRun
+  : (_latestRun = (window.FINDS||[]).reduce((m,f) => Math.max(m, f.run||0), 0)));
+const isNew = f => (f.run||0) === LATEST_RUN();
 
 function inWindow(f){
   if(stars.has(f.id)) return true;
