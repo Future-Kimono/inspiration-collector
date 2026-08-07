@@ -1,8 +1,8 @@
 window.BOARD_META = {
   "updated": "2026-08-07",
-  "runLabel": "Run 4 — 45 finds, 5 concepts",
+  "runLabel": "One board \u2014 newest first",
   "windowDays": 30,
-  "note": "Two tiers on this board. CURATED (6 finds, scored 5–6/6) is reference artwork that passed the full premium bar. SWEEP (21 finds) is the product half — real garments across MX, BJJ and teamwear, shown without a quality gate at Ladana's instruction so the reject buttons can teach the filter. Sweep scores are my honest read, not a gate; disagree freely, that is the point. Every image was looked at in a contact sheet before filing. 190 products assessed, 21 filed, women's items and cotton/mineral-wash garments filtered out before scoring. Read briefs/2026-08-06.md alongside this."
+  "note": "A mood board for Future Kimonos rash guard design, filled automatically instead of by hand \u2014 so Ladana and James stop trawling Pinterest and Google. \u2605 keep what holds (add a note saying why), \u2715 cut what doesn't (pick a reason). Those marks teach the next run. One flat board, no tiers: a museum print, a competitor's rash guard and a lettering style all sit together, because any of them might spark a design. Every image was opened and looked at before filing. Scores are an honest read, not a gate \u2014 disagree freely, that is the point."
 };
 
 window.FINDS = [

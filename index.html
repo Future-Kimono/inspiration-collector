@@ -811,7 +811,11 @@ function picks(){
 }
 
 window.__boot = function(){
-  document.getElementById("meta").textContent = BOARD_META.runLabel || BOARD_META.updated || "";
+  /* Count is derived from the data, never hardcoded — a hardcoded "45 finds"
+     in BOARD_META went stale the moment a run added anything. */
+  document.getElementById("meta").textContent =
+    [BOARD_META.runLabel || BOARD_META.updated, FINDS.length + " finds"]
+      .filter(Boolean).join(" \u00b7 ");
   render(); save(); loadSharedReviews();
 };
 if(window.FINDS) window.__boot();   // already loaded (standalone build)
