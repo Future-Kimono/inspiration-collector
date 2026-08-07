@@ -119,10 +119,33 @@ if(!reviewers.length){
   process.exit(0);
 }
 
+/* Written notes outrank every button. Ten reason codes cannot express "the snake is
+   good but the type under it is wrong" — a sentence can. Surface these first. */
+const allNotes = [];
+for(const [who,e] of Object.entries(latest))
+  for(const [id,text] of Object.entries(e.n || {}))
+    if(byId[id]) allNotes.push({who, find:byId[id], text});
+
+if(allNotes.length){
+  console.log("\n" + line + "\n★ WRITTEN NOTES — read these before anything else\n" + line);
+  console.log("In their own words. Outranks the buttons. Treat as direction, not as a filter.\n");
+  allNotes.forEach(({who,find,text}) => {
+    console.log(`  ${find.id}  ${find.title}`);
+    console.log(`  ${who}: "${text}"`);
+    console.log(`  (${find.territory} · ${find.bucket} · ${find.tier||"curated"})\n`);
+  });
+  console.log("  A note usually names WHICH ELEMENT earned the keep — the palette, the type,");
+  console.log("  the layout. The board is a parts bin: bank that element, not the whole object.");
+}
+
 console.log("\n" + line + "\nKEPT\n" + line);
 for(const [who,list] of Object.entries(keptBy)){
   console.log(`\n${who} kept ${list.length}:`);
-  list.forEach(f => console.log(`  ${f.id}  ${f.title}  [${f.territory} · ${f.tier||"curated"} · ${f.score}/6]`));
+  list.forEach(f => {
+    const n = (latest[who].n || {})[f.id];
+    console.log(`  ${f.id}  ${f.title}  [${f.territory} · ${f.tier||"curated"} · ${f.score}/6]`);
+    if(n) console.log(`         ↳ "${n}"`);
+  });
   if(list.length >= 2){
     const c = commonality(list);
     const notes = Object.entries(c).filter(([,v])=>v.length)

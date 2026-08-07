@@ -133,6 +133,18 @@
   .flag{font-size:10px;letter-spacing:.06em;padding:8px 14px 0}
   .flag.r{color:var(--accent)} .flag.s{color:var(--star)}
 
+  /* Free-text "why I kept this". Preset buttons can't carry "the snake is good but
+     the type under it is wrong" — this can. Highest-fidelity signal on the board. */
+  .noteboxwrap{display:none;padding:0 12px 12px}
+  .card.starred .noteboxwrap{display:block}
+  .notebox{width:100%;background:var(--panel);color:var(--ink);border:1px solid var(--line2);
+    border-radius:2px;padding:8px 10px;font:12px/1.5 inherit;resize:vertical;min-height:52px;
+    letter-spacing:normal;text-transform:none}
+  .notebox:focus{outline:none;border-color:var(--star)}
+  .notebox::placeholder{color:var(--faint)}
+  .mynote{font-size:11.5px;line-height:1.55;color:var(--star);padding:8px 14px 0;font-style:italic}
+  .peernote{font-size:11.5px;line-height:1.55;color:var(--muted);padding:6px 14px 0;font-style:italic}
+
   /* ── lightbox ─────────────────────────────────────────────── */
   #lb{position:fixed;inset:0;z-index:100;background:rgba(6,6,5,.97);display:none;
     align-items:center;justify-content:center;padding:36px;cursor:zoom-out}
@@ -508,8 +520,10 @@ let who = localStorage.getItem("fk-who") || "ladana";
 const sKey = w => "fk-stars-v2-" + w;
 const rKey = w => "fk-rejects-v1-" + w;
 const pKey = w => "fk-peer-v1-" + w;
+const nKey = w => "fk-notes-v1-" + w;   // free-text "why I kept this"
 let stars   = new Set(JSON.parse(localStorage.getItem(sKey(who)) || "[]"));
 let rejects = new Map(Object.entries(JSON.parse(localStorage.getItem(rKey(who)) || "{}")));
+let notes   = new Map(Object.entries(JSON.parse(localStorage.getItem(nKey(who)) || "{}")));
 
 let fBucket="all", fLane="all", fTerr="all", fTier="all",
     fStar=false, fNew=false, fShowRej=false, fPeer=false, fWild=false;
@@ -529,7 +543,8 @@ const setStatus = t => { const e = document.getElementById("synced"); if(e) e.te
 
 async function apiGet(){
   if(!API_BASE) return null;
-  try{ const r = await fetch(API_BASE + "/reviews", {cache:"no-store"});
+  try{ /* cache-bust: an edge cache served a stale copy during testing even with no-store */
+    const r = await fetch(API_BASE + "/reviews?cb=" + Date.now(), {cache:"no-store"});
        return r.ok ? await r.json() : null; }
   catch(e){ return null; }
 }
@@ -546,7 +561,8 @@ async function apiSave(){
   try{
     const r = await fetch(API_BASE + "/reviews", {
       method:"POST", headers:{"Content-Type":"application/json","X-Board-Key":key},
-      body: JSON.stringify({ who, s:[...stars], r:Object.fromEntries(rejects) })
+      body: JSON.stringify({ who, s:[...stars], r:Object.fromEntries(rejects),
+                             n:Object.fromEntries(notes) })
     });
     if(r.status === 401){ localStorage.removeItem(kKey());
       setStatus("wrong passphrase — click again"); return; }
@@ -575,7 +591,7 @@ async function loadSharedReviews(){
     const mine  = arr.filter(x => x && x.who === who).pop();
     const other = arr.filter(x => x && x.who && x.who !== who).pop();
     if(other && (!peer || (peer.at || "") <= (other.at || ""))){
-      peer = { w:other.who, at:other.at||"", s:other.s||[], r:other.r||{} };
+      peer = { w:other.who, at:other.at||"", s:other.s||[], r:other.r||{}, n:other.n||{} };
       localStorage.setItem(pKey(who), JSON.stringify(peer));
     }
     /* Restore your own marks only into an empty browser — never overwrite work
@@ -583,6 +599,7 @@ async function loadSharedReviews(){
     if(mine && stars.size === 0 && rejects.size === 0){
       stars   = new Set(mine.s || []);
       rejects = new Map(Object.entries(mine.r || {}));
+      notes   = new Map(Object.entries(mine.n || {}));
       save();
     }
     setStatus(other ? "live · " + peerName() + " " + (other.at||"") : "live");
@@ -607,7 +624,7 @@ peer = readPeer();
 
 function saveBlock(){
   const p = { who, at:new Date().toISOString().slice(0,10),
-              s:[...stars], r:Object.fromEntries(rejects) };
+              s:[...stars], r:Object.fromEntries(rejects), n:Object.fromEntries(notes) };
   const enc = encodeURIComponent(btoa(unescape(encodeURIComponent(
     JSON.stringify({w:who,at:p.at,s:p.s,r:p.r})))));
   const o = document.getElementById("out");
@@ -649,12 +666,14 @@ function setWho(){
   localStorage.setItem("fk-who", who);
   stars   = new Set(JSON.parse(localStorage.getItem(sKey(who)) || "[]"));
   rejects = new Map(Object.entries(localStorage.getItem(rKey(who)) ? JSON.parse(localStorage.getItem(rKey(who))) : {}));
+  notes   = new Map(Object.entries(JSON.parse(localStorage.getItem(nKey(who)) || "{}")));
   peer    = readPeer();
   save(); render(); loadSharedReviews();
 }
 function save(){
   localStorage.setItem(sKey(who), JSON.stringify([...stars]));
   localStorage.setItem(rKey(who), JSON.stringify(Object.fromEntries(rejects)));
+  localStorage.setItem(nKey(who), JSON.stringify(Object.fromEntries(notes)));
   document.getElementById("tally").innerHTML =
     "<b>" + stars.size + "</b> kept · <b>" + rejects.size + "</b> cut";
   queueSave();
@@ -676,7 +695,8 @@ function refreshCard(id){
 }
 function toggleStar(id){
   userActed = true;
-  if(stars.has(id)) stars.delete(id); else { stars.add(id); rejects.delete(id); }
+  if(stars.has(id)){ stars.delete(id); notes.delete(id); }   // un-keeping drops the note
+  else { stars.add(id); rejects.delete(id); }
   save(); refreshCard(id);
 }
 function setReject(id, reason){
@@ -764,10 +784,13 @@ function cardHTML(f){
   ].join("");
   const hex = f.swatches
     ? '<div class="hex">'+f.swatches.map((s,i)=>(f.swatchNames?f.swatchNames[i]+" ":"")+s).join("  ·  ")+'</div>' : '';
+  const esc = t => String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  const pNote = peer && peer.n && peer.n[f.id];
   const flags =
     (isStar ? '<div class="flag s">★ kept by you</div>' : '') +
     (isRej  ? '<div class="flag r">✕ '+(REASONS[rejects.get(f.id)]||"")+'</div>' : '') +
     (peerStarred(f.id)  ? '<div class="flag s">★ '+peerName()+' kept this</div>' : '') +
+    (pNote ? '<div class="peernote">'+peerName()+': “'+esc(pNote)+'”</div>' : '') +
     (peerRejected(f.id) ? '<div class="flag r">✕ '+peerName()+' — '+(REASONS[peer.r[f.id]]||"")+'</div>' : '');
   const reasons = Object.keys(REASONS).map(r =>
     '<span class="rc'+(rejects.get(f.id)===r?" on":"")+'" data-r="'+r+'">'+REASONS[r]+'</span>').join("");
@@ -787,6 +810,10 @@ function cardHTML(f){
     +   '<a class="src" href="'+f.source+'" target="_blank" rel="noopener">source</a>'
     + '</div>'
     + '<div class="why'+(isRej?" open":"")+'">'+reasons+'</div>'
+    + '<div class="noteboxwrap"><textarea class="notebox" rows="2" '
+    +   'placeholder="Why did you keep this? Type freely — one element is enough. '
+    +   'e.g. the palette only, or the type but not the graphic.">'
+    +   esc(notes.get(f.id) || "") + '</textarea></div>'
     + '</div>';
 }
 
@@ -802,6 +829,20 @@ function wire(el, f){
     else { const w = el.querySelector(".why"); if(w) w.classList.toggle("open"); }
   };
   el.querySelectorAll(".rc").forEach(c => c.onclick = () => setReject(f.id, c.dataset.r));
+  const nb = el.querySelector(".notebox");
+  if(nb){
+    /* Save on blur, not on every keystroke — otherwise a re-render would steal focus
+       mid-sentence. Enter inserts a newline as normal; click away to save. */
+    nb.onblur = () => {
+      const v = nb.value.trim();
+      const had = notes.get(f.id) || "";
+      if(v === had) return;
+      userActed = true;
+      if(v) notes.set(f.id, v); else notes.delete(f.id);
+      save();
+    };
+    nb.onclick = e => e.stopPropagation();
+  }
   const shot = el.querySelector(".shot");
   if(shot && f.img) shot.onclick = e => {
     if(e.target && e.target.closest && e.target.closest(".meta")) return;
@@ -851,7 +892,9 @@ function lineFor(f){
   if(f.tags && f.tags.length) t += "  tags: " + f.tags.join(", ") + "\n";
   t += "  source: " + f.source + "\n";
   if(f.img) t += "  image: " + f.img + "\n";
+  if(notes.get(f.id))    t += "  WHY I KEPT IT: " + notes.get(f.id) + "\n";
   if(peerStarred(f.id))  t += "  " + peerName() + ": KEPT\n";
+  if(peer && peer.n && peer.n[f.id]) t += "  " + peerName() + " SAYS: " + peer.n[f.id] + "\n";
   if(peerRejected(f.id)) t += "  " + peerName() + ": REJECTED — " + (REASONS[peer.r[f.id]]||peer.r[f.id]) + "\n";
   return t;
 }
