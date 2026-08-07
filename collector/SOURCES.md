@@ -18,6 +18,30 @@ The practical version: a motocross jersey and a rash guard are the same manufact
 
 ---
 
+## The two negative musts
+
+**Added 7 Aug 2026. These are things the collector must never do, regardless of how good the finds are.**
+
+### 1. No single brand may dominate a run
+
+**Cap any one brand at roughly 4 finds per run, and any one *source method* at roughly a third.**
+
+The failure this prevents: Venum is the closest aesthetic match in the register and has 69 relevant products. Left alone, a run would return a Venum catalogue. The board would look excellent and teach nothing, because every find would share one art director's assumptions.
+
+If a brand is producing so much good work that the cap bites, that is itself the finding — **say it in the brief** rather than quietly filling the board with them.
+
+Run 3 breached the spirit of this: 6 of 6 curated finds came from one source method (museum open-access) and two artists. Better than run 2, still too narrow.
+
+### 2. Every reference find must stay citable
+
+**Never file an image whose origin cannot be named and linked.**
+
+Reference-class finds are other people's work. Each carries a working source link and, where known, the artist's name. The note describes the *mechanic* — the composition, the palette relationship, the type hierarchy — never "copy this".
+
+This is not bureaucracy. A find whose origin has been lost cannot be verified, cannot be licensed if it ever mattered, and cannot be traced back when someone asks six months later where an idea came from. **If the source cannot be established, drop the find.** There is always another.
+
+---
+
 ## Lane weighting
 
 | Share of daily finds | Lane |
@@ -160,7 +184,46 @@ Capped at roughly one visual find a day, and **only for a genuinely new design s
 | FUJI Sports | `https://www.fujisports.com/products.json` | Licensed collabs. Republished its whole catalogue 3 Aug 2026 — treat with suspicion |
 | Future Kimonos (own) | `https://www.futurekimonos.com/products.json` | Baseline. 208 rash guards — check before proposing anything |
 
-**Blocked, do not retry:** hayabusafight.com, vhtsny.com, gymshark.com.
+**Blocked to `web_fetch`:** vhtsny.com, gymshark.com.
+**Correction, 7 Aug 2026:** hayabusafight.com was listed here as blocked. It is not — it returns 250 products from the browser. It is excluded by Ladana's instruction, not by a technical limit. Keeping a false reason on record would mislead a future decision.
+
+### Venum — added 7 Aug 2026
+
+`https://row.venum.com/products.json?limit=250` — **250 products, 69 rash guards and shorts.** Confirmed live from the browser.
+
+Ladana's route to it is the point: she searched UFC athletes, saw what they compete in, and arrived at the brand. It is UFC's exclusive outfitter, so its catalogue is the single largest body of rash guard design built to one brief anywhere. Closest aesthetic match to Future Kimonos in the register.
+
+---
+
+## Lane 5b — Event-led discovery
+
+**Added 7 Aug 2026.** One card puts an entire field in matching kit on one night, dated and photographed.
+
+Rather than chasing athletes one at a time, work the event: UFC numbered cards, ADCC, WNO, CJI, Grand Prix, ONE, PFL. A single event yields a whole kit programme — champion variants, walkout kit, corner kit, country editions — designed to one brief and released together.
+
+**Why it beats athlete-by-athlete:** it is dated, it shows a *system* rather than a one-off, and it surfaces the seasonal logic behind a drop. The UFC 288 Champ collection is the example — black base, gold as a line tracing the panel seams, name running the full spine.
+
+**What to capture:** the event, the date, the kit tiers within it, and how the design changes between tiers. Note when a promotion runs country or champion variants — that is a repeatable range structure, not a single design.
+
+## Lane 5c — Collab and licensing discovery
+
+**Added 7 Aug 2026.** Where brands take their biggest graphic risks, because a borrowed IP gives permission to be strange.
+
+Search on collaborations rather than products: `venum x`, `ufc x`, brand × game, brand × anime, brand × artist. Known live: Venum × Tekken 8 (Yoshimitsu), Fasthouse × Hot Wheels, Gold BJJ × named tattoo artists, FUJI licensed collabs.
+
+**Two things to extract, and they are different:**
+1. **The graphic** — what a licence let them do that they would not otherwise attempt.
+2. **The mechanic** — collab as a *release strategy*. It supplies a story, a reason to be limited, and an audience that is not yours. **Future Kimonos has no collab programme.** Against eighteen months without a new series, that is a structural finding, not just a design one.
+
+## Lane 5d — Retailer and aggregator discovery
+
+**Added 7 Aug 2026.** Multi-brand stockists surface brands nobody would have thought to search for.
+
+This is the accident that found Venum, made repeatable. A retailer that carries thirty rash guard labels is a map of the category, including the small and regional names invisible from a brand-by-brand list.
+
+**What to capture:** brand names not already in this register, then assess each on its own. **The retailer is a directory, not a source** — never file a retailer listing image as a find. Go to the brand, verify the product, take the image from there.
+
+**Also useful:** what a retailer chooses to feature, and what is discounted. Both are demand signals a brand's own feed will never show you.
 
 ## Lane 6 — Print, colour and macro direction (written, no images)
 
