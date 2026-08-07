@@ -77,16 +77,24 @@ into a rule would lock in one person's taste without anyone noticing.
 
 ---
 
-## Honest limits — worth knowing
+## Saving — the one-time passphrase
 
-**Your marks are saved in your browser, not on the website.**
+The very first time you star something, you'll be asked for a **team passphrase**. Type it
+once and that device remembers it forever. Ask Ladana for it.
 
-That means:
+After that, saving is automatic. You'll see **saved** with a timestamp at the top whenever
+your marks go through. There's no save button to remember.
 
-- Close the tab and come back later on the same computer — your stars are still there ✓
-- Open it on your phone instead — it will look empty, because that's a different browser
-- **Which is why pressing "Save my review" matters.** Until you do, your marks only exist
-  on your machine
+Because your marks live on the internet rather than in one browser:
+
+- Star things on your laptop, open it on your phone later — they're all there ✓
+- Both of you see each other's marks without sending anything ✓
+- Clearing your browsing history doesn't lose your work ✓
+
+If you're somewhere with no signal it still works — it saves locally and pushes everything
+up the moment you're back online. The status at the top tells you which is happening.
+
+## Worth knowing
 
 **The board updates when a new research run happens**, not continuously. It's a weekly
 report you can mark up, not a live feed.
@@ -98,14 +106,15 @@ The notes describe the *technique* worth borrowing. It's a research tool, not a 
 
 ## If something looks wrong
 
-**The page is blank or images are missing.** Refresh once. If it's still empty you may have
+**The page is blank or images are missing.** Refresh once. If it's still empty, you may have
 been sent the *file* rather than the *link* — always use the link at the top of this page.
 
 **It looks out of date.** Refresh. Your browser may be showing a saved copy.
 
-**Your stars vanished.** They're tied to one browser on one computer. If you cleared your
-browsing history or switched machines, they're gone — which is the reason to press
-**Save my review** when you finish a session rather than leaving marks sitting in a tab.
+**It says "wrong passphrase".** Click a star again and you'll be asked to re-enter it.
+
+**It says "offline — saved in this browser only".** Your marks are safe; they'll sync as
+soon as you're back on a connection.
 
 ---
 
