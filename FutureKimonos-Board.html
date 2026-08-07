@@ -492,7 +492,7 @@ let peer = readPeer();
    Set API_BASE and stars/rejects save to the internet, so they follow you
    between laptop and phone and both reviewers see each other live.
    Leave it empty and the board still works, saving to this browser only. */
-const API_BASE = "";   // e.g. "https://fk-board.<subdomain>.workers.dev"
+const API_BASE = "https://fk-board.ladana.workers.dev";   // e.g. "https://fk-board.<subdomain>.workers.dev"
 
 const kKey = () => "fk-key";
 const setStatus = t => { const e = document.getElementById("synced"); if(e) e.textContent = t; };
