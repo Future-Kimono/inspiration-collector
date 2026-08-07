@@ -1,6 +1,6 @@
 window.BOARD_META = {
-  "updated": "2026-08-06",
-  "runLabel": "Run 3 — 6 curated + 21 product sweep",
+  "updated": "2026-08-07",
+  "runLabel": "Run 3 + Ladana's own research",
   "windowDays": 30,
   "note": "Two tiers on this board. CURATED (6 finds, scored 5–6/6) is reference artwork that passed the full premium bar. SWEEP (21 finds) is the product half — real garments across MX, BJJ and teamwear, shown without a quality gate at Ladana's instruction so the reject buttons can teach the filter. Sweep scores are my honest read, not a gate; disagree freely, that is the point. Every image was looked at in a contact sheet before filing. 190 products assessed, 21 filed, women's items and cotton/mineral-wash garments filtered out before scoring. Read briefs/2026-08-06.md alongside this."
 };
@@ -292,5 +292,92 @@ window.FINDS = [
     "img": "https://cdn.shopify.com/s/files/1/0100/7232/files/Red.jpg?v=1774373450",
     "source": "https://shoyoroll.com/products/tvt001-7-ss-rash-guard",
     "tags": ["floor marker", "no artwork", "brand equity only", "reject me"], "firstSeen": "2026-08-06"
+  },
+
+  /* ── LADANA'S OWN RESEARCH — filed 7 Aug 2026 ──────────────────────────────
+     Fed in directly rather than found by a sweep. Notes are HER words where she
+     gave them. These are seeds and parts, not proposals: the point is the one
+     element worth banking, not the whole garment. */
+
+  {
+    "id": "F0807-01", "bucket": "03-pattern", "lane": "inbox",
+    "territory": "motorsport-graphics", "class": "buildable", "score": 5, "tier": "curated",
+    "title": "UFC Adrenaline Fight Week desert camo rash guard", "brand": "Venum × UFC — supplied by Ladana",
+    "note": "The camo is built in THREE densities of the same shape: solid tan fills, the same shards filled with fine hatching, and speckled distress over the top. That layering is why it reads expensive instead of like stock camo — one motif, three treatments. Two other things worth banking separately: there is no black anywhere, it is warm neutrals only, which is rare in a category that defaults to black; and the sponsor marks are tiny technical blocks (05, FW3, a boxed monogram) used as micro-typography, the same move as the 6pt footer on Serpent Core.",
+    "img": "refs/L01-venum-desert-camo.png",
+    "source": "https://row.venum.com/",
+    "tags": ["three-density camo", "no black", "warm neutrals", "technical micro-type", "one motif three treatments"],
+    "firstSeen": "2026-08-07"
+  },
+  {
+    "id": "F0807-02", "bucket": "04-light-dark-placement", "lane": "inbox",
+    "territory": "motorsport-graphics", "class": "buildable", "score": 4, "tier": "curated",
+    "title": "UFC red fight shorts — tonal shard camo", "brand": "Venum × UFC — supplied by Ladana",
+    "note": "Tonal on tonal: darker red shards on a red base, so it reads as texture at distance and only resolves as a pattern up close. The same trick as the Tatami croc shorts but in a saturated colour rather than black — proof the mechanic is not tied to black. White UFC waistband is the only hard contrast on the whole garment.",
+    "img": "refs/L02-ufc-red-shorts.png",
+    "source": "https://row.venum.com/",
+    "tags": ["tonal on tonal", "resolves close up", "saturated base", "single hard contrast"],
+    "firstSeen": "2026-08-07"
+  },
+  {
+    "id": "F0807-03", "bucket": "02-font-type", "lane": "inbox",
+    "territory": "luxury-streetwear", "class": "buildable", "score": 6, "tier": "curated",
+    "title": "UFC 288 Champ Collection — black and gold", "brand": "Venum × UFC — supplied by Ladana",
+    "note": "Two mechanics, and the second is the valuable one. First: the gold is a LINE, not a fill — it traces the panel seams rather than filling shapes, which is why it reads as expensive rather than gaudy. Second: the back is the customisation promoted to hero — a name running the full length of the spine in gold. Future Kimonos already sells name and handle personalisation as a small add-on. This is the same feature made into the entire design.",
+    "img": "refs/L03-ufc288-black-gold.png",
+    "source": "https://row.venum.com/",
+    "tags": ["gold as line not fill", "seam tracing", "name as hero", "spine typography", "personalisation as design"],
+    "firstSeen": "2026-08-07"
+  },
+  {
+    "id": "F0807-04", "bucket": "08-standout-graphic", "lane": "reference",
+    "territory": "neo-japanese", "class": "reference", "score": 6, "tier": "curated",
+    "title": "Shaffron — horse's head defence, French, ca. 1600", "brand": "The Met, public domain — Ladana's Year of the Horse seed",
+    "note": "Ladana's reference, and her read on it was a stencil outline on a back panel. Why it works: it is a HERO SHAPE — a single silhouette that survives being reduced to one colour, which is exactly what the Yoshitoshi finds proved works on a dark ground. The etched foliate ornament across the articulated plates gives a second layer of detail that can be dialled up or down. Year of the Horse without being a picture of a horse, the same way Serpent Core is not a picture of a snake.",
+    "img": "https://images.metmuseum.org/CRDImages/aa/web-large/DP-12882-006.jpg",
+    "source": "https://www.metmuseum.org/art/collection/search/22987",
+    "tags": ["hero silhouette", "stencil ready", "etched ornament", "year of the horse", "armour as motif"],
+    "firstSeen": "2026-08-07"
+  },
+  {
+    "id": "F0807-05", "bucket": "06-garment-layout", "lane": "reference",
+    "territory": "neo-japanese", "class": "reference", "score": 6, "tier": "curated",
+    "title": "Shaffron — probably Turkish, ca. 1525–50", "brand": "The Met, public domain",
+    "note": "The frontal view is the better back-panel shape than the three-quarter one. Perfectly symmetrical, huge circular cheek discs against a narrow tapering nose plate — a strong graphic silhouette before any detail is added at all. Symmetry down a centre line is exactly how a back panel wants to be composed. Etched arabesque fills the plates without breaking the outline.",
+    "img": "https://images.metmuseum.org/CRDImages/aa/web-large/DP153624.jpg",
+    "source": "https://www.metmuseum.org/art/collection/search/934545",
+    "tags": ["bilateral symmetry", "strong silhouette", "centre line", "back panel shape", "arabesque fill"],
+    "firstSeen": "2026-08-07"
+  },
+  {
+    "id": "F0807-06", "bucket": "05-mood", "lane": "reference",
+    "territory": "neo-japanese", "class": "reference", "score": 5, "tier": "curated",
+    "wildcard": true,
+    "title": "Shaffron — Tibetan or Mongolian, 15th–17th century", "brand": "The Met, public domain",
+    "note": "Wildcard. The strangest of the three and the least like a Western armour: a wide bat-like outline, studded lamellar surface, textile straps still attached, two large eye openings that read almost as a mask. Filed because the silhouette is genuinely unusual and the mask reading opens a different door from the horse one. Cut it freely if it is a step too far.",
+    "img": "https://images.metmuseum.org/CRDImages/aa/web-large/DP114088.jpg",
+    "source": "https://www.metmuseum.org/art/collection/search/27673",
+    "tags": ["unusual silhouette", "mask reading", "lamellar texture", "wildcard"],
+    "firstSeen": "2026-08-07"
+  },
+  {
+    "id": "F0807-07", "bucket": "01-colour-palette", "lane": "bjj",
+    "territory": "cyberpunk-tech", "class": "buildable", "score": 5, "tier": "curated",
+    "title": "Venum × TEKKEN 8 Long Sleeve Rashguard — Yoshimitsu", "brand": "Venum — chosen by Ladana",
+    "note": "LADANA: \"love the pop of colours on the black base\". The mechanic behind that: the base is near-black and desaturated, and the colour arrives only as thin accent lines and small blocks — orange, blue, yellow — so a small quantity of saturated colour does all the work. Also the clearest argument in the register for a collab programme: a licensed character gave them permission to be far louder than their own line.",
+    "img": "https://cdn.shopify.com/s/files/1/0767/3072/8767/files/60569723812682cc2db02fe30ad6b1d6fd411c57_VENUM_06206_112_G_03.jpg?v=1774532983",
+    "source": "https://row.venum.com/products/venum-x-tekken-8-long-sleeve-rashguard-yoshimitsu-black-orange",
+    "tags": ["pop of colour on black", "accent lines not fills", "licensed collab", "small quantity saturated"],
+    "firstSeen": "2026-08-07"
+  },
+  {
+    "id": "F0807-08", "bucket": "03-pattern", "lane": "bjj",
+    "territory": "luxury-streetwear", "class": "buildable", "score": 5, "tier": "curated",
+    "title": "Venum Matupa Rashguard — Black/Grey/Gold", "brand": "Venum — chosen by Ladana",
+    "note": "LADANA: \"love the snake print\". The mechanic: the snake scale is a tonal grey-on-black all-over, and the gold appears only as a thin contour line following the body — gold as line, not fill, the same move as the UFC 288 piece. Two of her four references share that, which makes it the strongest repeated signal in her set. Note this is animal print used as texture rather than illustration, which is the opposite of how FK has used the serpent so far.",
+    "img": "https://cdn.shopify.com/s/files/1/0767/3072/8767/files/6819aeff744f7f08c19364efae681b59dff9c180_VENUM_06068_659_G_5.jpg?v=1775213975",
+    "source": "https://row.venum.com/products/venum-matupa-short-sleeve-rashguard-black-grey-gold",
+    "tags": ["snake scale all-over", "gold as line", "tonal grey on black", "animal print as texture"],
+    "firstSeen": "2026-08-07"
   }
 ];

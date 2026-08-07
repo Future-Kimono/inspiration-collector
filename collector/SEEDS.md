@@ -166,3 +166,48 @@ They still work, but their scope is deliberately limited:
 
 If the collector ever writes a rule broader than the evidence supports, that is a bug. Say so
 and it gets narrowed.
+
+---
+
+## Mechanics extracted from Ladana's own research — 7 Aug 2026
+
+Read off her four references rather than described in the abstract. **These are
+ingredients to combine, not a look to reproduce.**
+
+| Mechanic | Where it came from | Why it matters |
+|---|---|---|
+| **Three-density camo** | Venum desert rash guard | One motif in three treatments — solid fill, hatched fill, speckled distress. This is why it reads expensive rather than like stock camo |
+| **No black at all** | Same | Warm neutrals only. Rare in a category that defaults to black, and an easy way to stand out on a mat |
+| **Technical micro-type** | Same | `05`, `FW3`, boxed monograms as texture. Already native to FK — Serpent Core's 6pt footer |
+| **Gold as line, not fill** | UFC 288 Champ **and** Venum Matupa | Traces panel seams instead of filling shapes. **Appears in two of her four references — the strongest repeated signal in her set** |
+| **Name as hero** | UFC 288 Champ | Personalisation running the full spine. FK already sells name customisation as a small add-on; this makes it the whole design |
+| **Tonal on tonal** | UFC red shorts, Venum Matupa | Reads as texture at distance, resolves as pattern up close. Works in saturated colour, not only black |
+| **Animal print as texture** | Venum Matupa | Snake as an all-over surface rather than an illustrated creature — the opposite of how FK has used the serpent so far |
+| **Hero silhouette** | Met shaffrons | A shape that survives being reduced to one colour. Ladana's read: stencil outline on a back panel |
+
+### New seeds
+
+| # | Seed | From | Added | Status |
+|---|---|---|---|---|
+| S12 | Animal print in sportswear — as *texture*, not as a drawn animal | Ladana | 2026-08-07 | unexplored |
+| S13 | Camo — the three-density mechanic above, and camo beyond military green | Ladana | 2026-08-07 | unexplored |
+| S14 | Black and gold, with gold as a line | Ladana | 2026-08-07 | unexplored |
+| S15 | **Flag prints and national identity** — country editions, national colourways | Ladana | 2026-08-07 | unexplored |
+| S16 | Warm neutral palettes with no black in them at all | extracted | 2026-08-07 | unexplored |
+
+### The horse, restated after seeing her reference
+
+Ladana's read on the shaffron was **a stencil outline on a back panel**. That is the right
+instinct and it connects to something already proven on this board: the Yoshitoshi finds all
+work by putting one hero on a dark ground with everything else quiet. **A shaffron is a hero
+shape.**
+
+It is also Year of the Horse *without being a picture of a horse* — the same move as Serpent
+Core being a snake in cyan crosshatch rather than a snake. Her own phrasing for the direction:
+*"the horse becomes the hero, not the rider."*
+
+### ⚠️ The balance risk she spotted herself
+
+Three of her four references are Venum/UFC product photography. Weighted naively, the board
+becomes a Venum catalogue — convergence in a new form. **The shaffron is the counterweight and
+it is the one that is not a garment at all.** Hold that balance; do not chase the easy wins.
