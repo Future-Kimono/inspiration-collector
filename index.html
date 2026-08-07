@@ -104,6 +104,12 @@
   .kicker{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);
     padding:12px 14px 0}
   .kicker b{color:var(--accent);font-weight:400}
+  /* Wildcards are deliberate shots in the dark. Marked so they can be judged as
+     exploration, and rejected freely without narrowing anything. */
+  .card.wild{border-color:#3d4f6b}
+  .card.wild:hover{border-color:#5b78a0}
+  .wildtag{display:block;font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+    color:#7f9dc4;padding:11px 14px 0}
   .hex{font:10.5px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--faint);
     padding:10px 14px 0;letter-spacing:.04em}
 
@@ -208,7 +214,7 @@ let stars   = new Set(JSON.parse(localStorage.getItem(sKey(who)) || "[]"));
 let rejects = new Map(Object.entries(JSON.parse(localStorage.getItem(rKey(who)) || "{}")));
 
 let fBucket="all", fLane="all", fTerr="all", fTier="all",
-    fStar=false, fNew=false, fShowRej=false, fPeer=false;
+    fStar=false, fNew=false, fShowRej=false, fPeer=false, fWild=false;
 
 function readPeer(){
   try { return JSON.parse(localStorage.getItem(pKey(who)) || "null"); }
@@ -409,6 +415,8 @@ function buildFilters(){
   h += chip("star", fStar,"flag","★ Kept "+stars.size);
   if(peer) h += chip("peer", fPeer,"flag","★ "+peerName()+" "+((peer.s||[]).length));
   h += chip("rej", fShowRej,"flag","Cut "+rejects.size, true);
+  const nWild = live.filter(f=>f.wildcard).length;
+  if(nWild) h += chip("wild", fWild,"flag","◇ Wildcards "+nWild);
   h += chip("new", fNew,"flag","New");
   h += '<span class="brk"></span><span class="flab">Territory</span>';
   h += chip("all", fTerr==="all","terr","All");
@@ -427,6 +435,7 @@ function buildFilters(){
     else if(k==="lane") fLane=v; else if(k==="tier") fTier=v;
     else if(v==="star") fStar=!fStar; else if(v==="new") fNew=!fNew;
     else if(v==="rej") fShowRej=!fShowRej; else if(v==="peer") fPeer=!fPeer;
+    else if(v==="wild") fWild=!fWild;
     render();
   });
 }
@@ -440,6 +449,7 @@ function visible(){
     .filter(f => fLane==="all" || f.lane===fLane)
     .filter(f => !fStar || stars.has(f.id))
     .filter(f => !fPeer || peerStarred(f.id))
+    .filter(f => !fWild || f.wildcard)
     .filter(f => !fNew || ageDays(f.firstSeen) <= 7);
 }
 
@@ -464,10 +474,12 @@ function cardHTML(f){
   const reasons = Object.keys(REASONS).map(r =>
     '<span class="rc'+(rejects.get(f.id)===r?" on":"")+'" data-r="'+r+'">'+REASONS[r]+'</span>').join("");
 
-  return '<div class="card'+(isStar?" starred":"")+(isRej?" rejected":"")+'" data-id="'+f.id+'">'
+  return '<div class="card'+(isStar?" starred":"")+(isRej?" rejected":"")
+    + (f.wildcard?" wild":"")+'" data-id="'+f.id+'">'
     + '<div class="shot">'+visual
     + '<div class="meta"><div class="ttl serif">'+f.title+'</div>'
     + '<div class="by">'+f.brand+'</div>'+chips+'</div></div>'
+    + (f.wildcard ? '<div class="wildtag">◇ Wildcard — a shot in the dark. Cut it freely, it narrows nothing.</div>' : '')
     + flags + hex
     + '<div class="kicker"><b>'+(TERR[f.territory]||"—")+'</b> · '+(NAMES[f.bucket]||f.bucket)+'</div>'
     + '<div class="note">'+f.note+'</div>'

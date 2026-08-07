@@ -12,9 +12,31 @@ Created 6 August 2026, when the second board was rejected. Before this file exis
 
 ## The rule that makes this work
 
-**One reject is an opinion. Three rejects sharing a reason is a rule.** When the same reason lands on three finds with a shared attribute, write a standing filter for it and stop surfacing that attribute. Say so in the next brief so the change is visible rather than silent.
+**One reject is an opinion. Three rejects sharing a reason is a rule.** When the same reason lands on three finds with a shared attribute, write a standing filter for it. Say so in the next brief so the change is visible rather than silent.
 
 Never delete a row. A pattern that stops being rejected because the collector stopped surfacing it is not a pattern that went away.
+
+## ⚠️ Scope every rule to the narrowest evidence
+
+**Added 7 August 2026, after Ladana pointed out the system was convergent.**
+
+A rejection means *"this execution is wrong."* It does **not** mean *"this whole direction is wrong."* Writing rules broader than the evidence is how a research tool collapses into a mirror of what someone already liked.
+
+| Evidence | ✅ Correct rule | ❌ Over-broad rule |
+|---|---|---|
+| 3 Troy Lee / Fasthouse sweep jerseys rejected as `cheap` | Raise the bar for MX product sweep — flat vector fills with no tonal information stop qualifying | Drop the motorsport lane |
+| 2 colour-block rash guards rejected as `plain` | A base colour alone is not a design event | Stop showing rash guards |
+| A ukiyo-e print rejected as `busy` | Crowded multi-figure compositions don't read on a body | Stop showing printmaking |
+
+**Three tests before writing any standing filter:**
+
+1. **Is it the narrowest rule that explains the evidence?** If a narrower one fits, use that.
+2. **Does it close a door or raise a floor?** Prefer raising the floor. Only close a door on an explicit instruction in words.
+3. **Would it have excluded something previously kept?** If yes, it is too broad. Narrow it.
+
+**Only Ladana or James, in words, can close a direction entirely.** A button click can never do it. If a rule below is broader than its evidence, that is a bug — say so and it gets narrowed.
+
+Wildcard finds (`wildcard: true`) are **exempt**. Rejecting one never counts toward a filter and never narrows a territory. See `SEEDS.md`.
 
 ---
 
