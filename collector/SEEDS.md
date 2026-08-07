@@ -211,3 +211,81 @@ Core being a snake in cyan crosshatch rather than a snake. Her own phrasing for 
 Three of her four references are Venum/UFC product photography. Weighted naively, the board
 becomes a Venum catalogue — convergence in a new form. **The shaffron is the counterweight and
 it is the one that is not a garment at all.** Hold that balance; do not chase the easy wins.
+
+---
+
+## Added 7 August 2026 — competitor set, heritage, and country editions
+
+**Additive only.** Nothing above is replaced.
+
+### S17 — The real competitor set
+
+Ladana's research identified who Future Kimonos is actually measured against. **The closest
+aesthetic matches are the important ones**, not the biggest brands:
+
+| Brand | Why it matters |
+|---|---|
+| **VHTS** (Very Hard To Submit) | Minimal Japanese-inspired branding, premium construction, cult following. **The closest taste match in the category** |
+| **CTRL Industries** | Clean graphics, lifestyle-meets-performance, modern streetwear influence |
+| **Jiujiteiro** | Sophisticated minimalist, premium, same audience |
+| **Hyperfly** | Premium gi and no-gi, strong global following, runs the country programme below |
+| **Albino & Preto** | Fashion-forward, collaboration-driven |
+| **MA1 Combat** | Australian premium — closest to home |
+| **Origin USA** | American-made heritage positioning |
+
+Shoyoroll and Tatami are already in `SOURCES.md`. **Only add these to the always-scrape list
+once they have actually produced something worth keeping** — the brand cap in `SOURCES.md`
+applies, and a longer list is not automatically a better one.
+
+### S18 — BJJ heritage beyond Japan
+
+The lineage is real and it is not only Japanese:
+
+```
+Ancient grappling → Japanese Jujutsu (feudal Japan) → Judo (Kano, 1882)
+→ Mitsuyo Maeda travels the world → Brazil (1914–17) → Gracie adaptation → BJJ → No-Gi
+```
+
+So **Brazilian visual culture is as native to this sport as Japanese is**, and it is almost
+untouched by the catalogue. Worth exploring: Portuguese *azulejo* tilework, Afro-Brazilian
+motifs and capoeira, Brazilian modernism (Niemeyer's curves, Bo Bardi), tropicália print,
+Amazonian pattern, carnival graphic tradition.
+
+**⚠️ A distinction that matters.** Gold BJJ's *Canarinho* — Brazil in yellow and green — was
+**cut as off-brand**. That does not close Brazil; it says **a national football colourway is
+not the same thing as a national visual culture.** Azulejo tilework is a pattern system.
+Yellow-and-green is a flag. Do not confuse the two.
+
+Also on the map, because Maeda travelled and the sport spread: Okinawan, Korean, Mongolian
+and Southeast Asian grappling traditions.
+
+### S19 — Country editions, driven by real customer data
+
+Ladana's idea, and it is the sharpest commercial one in this file:
+
+> *"I like the country-styled rash guards. I was thinking if we could find out where our
+> customers are mainly living and what ethnic backgrounds they have — eg if we have a lot of
+> Filipino customers then we can do a Philippines rash guard. This is AN EXAMPLE, it can be
+> any country."*
+
+Hyperfly runs exactly this programme — USA, Philippines, South Korea, Brazil, Japan, Germany,
+Poland — at $125–150, and the Philippines one is **sold out**. That is demand evidence, not a
+guess.
+
+**This is not a design question, it is a data question.** The answer is in Shopify: orders by
+country, and traffic by region. **Do not guess which countries.** Pull the numbers first, then
+design for the top three or four.
+
+The design lesson from Hyperfly's set is that the good ones use **a national pattern language,
+not a flag**: the Philippines piece uses the sun-ray device and traditional weave, the South
+Korea piece uses large ink-brush roundels. The weak ones are just flag colours in panels.
+
+**Noted but deliberately not on the board:** Ladana liked the South Korea print and explicitly
+said not to add it. Recorded here so the preference is not lost.
+
+### S20 — More brands to explore
+
+Beyond the competitor set: MMA and promotion outfitters (ONE, PFL, Bellator each have their
+own), regional labels surfaced through retailer discovery, and whatever the athlete lane turns
+up. **Breadth of brands is only useful if the quality bar holds** — a longer list that produces
+the same average product is worse than a short one.

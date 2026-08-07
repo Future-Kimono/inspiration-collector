@@ -379,5 +379,26 @@ window.FINDS = [
     "source": "https://row.venum.com/products/venum-matupa-short-sleeve-rashguard-black-grey-gold",
     "tags": ["snake scale all-over", "gold as line", "tonal grey on black", "animal print as texture"],
     "firstSeen": "2026-08-07"
+  },
+
+  {
+    "id": "F0807-09", "bucket": "01-colour-palette", "lane": "combat",
+    "territory": "motorsport-graphics", "class": "buildable", "score": 5, "tier": "curated",
+    "title": "Stealth Muay Thai Shorts — Khaki/Dark Green", "brand": "Venum — chosen by Ladana",
+    "note": "LADANA: \"really like this colourway\". Khaki against deep forest green with a warm sand accent — no black anywhere, which is the same thing that made the desert camo piece stand out. Military neutrals rather than military camo: the palette does the work, the pattern is barely there. Sits directly against the Gold BJJ and Shoyoroll cuts, which were mostly cut for being plain — so this is the line between restrained and empty.",
+    "img": "https://cdn.shopify.com/s/files/1/0767/3072/8767/files/946b872dea90add0b9d66aca1ab808adeaf2208c_VENUM_06272_459_G_2.jpg?v=1775636162",
+    "source": "https://row.venum.com/products/stealth-muay-thai-shorts-khaki-dark-green",
+    "tags": ["khaki and forest", "no black", "military neutrals", "restrained not empty"],
+    "firstSeen": "2026-08-07"
+  },
+  {
+    "id": "F0807-10", "bucket": "06-garment-layout", "lane": "combat",
+    "territory": "motorsport-graphics", "class": "buildable", "score": 5, "tier": "curated",
+    "title": "Stealth Rashguard — Khaki/Dark Green (the matching half)", "brand": "Venum",
+    "note": "Filed alongside the shorts because the colourway Ladana picked runs as a full kit — rash guard, shorts and tights in the same khaki and forest, with a fine dot-matrix fade across the torso. The set is the product, not the piece. Same lesson as the Gold Aurelius kit, executed in a palette she has actually chosen rather than one that got cut.",
+    "img": "https://cdn.shopify.com/s/files/1/0767/3072/8767/files/226bac7601f8b75839defc59a7bbae0e4ba32a54_VENUM_06276_459_G_1.jpg?v=1777992621",
+    "source": "https://row.venum.com/products/venum-stealth-short-sleeve-rashguard-khaki-dark-green",
+    "tags": ["matched kit", "dot-matrix fade", "khaki and forest", "set as product"],
+    "firstSeen": "2026-08-07"
   }
 ];
