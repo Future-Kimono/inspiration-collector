@@ -135,6 +135,7 @@
   .pill{background:rgba(0,0,0,.78);border-radius:2px;padding:2px 6px}
   .pill.k{color:var(--star)} .pill.c{color:var(--accent)}
   .pill.p{color:#9fb6d4} .pill.w{color:#7f9dc4} .pill.scr{color:var(--muted)}
+  .pill.n{background:var(--accent);color:#fff;letter-spacing:.1em;font-size:9px}
 
   .head{padding:11px 12px 0}
   .ttl{font-size:13.5px;line-height:1.3;margin:0 0 2px}
@@ -257,7 +258,21 @@
   <div class="sheet" id="sheet" onclick="event.stopPropagation()"></div>
 </div>
 
-<script src="finds.js"></script>
+<script>
+/* finds.js is served with cache-control: max-age=600, and a plain <script src>
+   lets the browser keep serving a stale copy long after a run has published —
+   which is exactly what happened. Load it with a cache-buster and boot after. */
+(function(){
+  var el = document.createElement("script");
+  el.src = "finds.js?v=" + Date.now();
+  el.onload = function(){ if(window.__boot) window.__boot(); };
+  el.onerror = function(){
+    document.getElementById("board").innerHTML =
+      '<p class="empty">Could not load the finds. Refresh, or check the board has been published.</p>';
+  };
+  document.head.appendChild(el);
+})();
+</script>
 <script>
 const NAMES = {
   "01-colour-palette":"Colour palette","02-font-type":"Font and type","03-pattern":"Pattern",
@@ -410,7 +425,7 @@ function saveBlock(){
   try{ navigator.clipboard.writeText(o.value); }catch(e){}
 }
 
-const WINDOW = (window.BOARD_META && BOARD_META.windowDays) || 30;
+const WINDOW = () => (window.BOARD_META && BOARD_META.windowDays) || 30;
 const today = new Date();
 const ageDays = d => { const t = Date.parse(d); return isNaN(t) ? 999 : Math.floor((today-t)/86400000); };
 const otherWho = () => who === "ladana" ? "james" : "ladana";
@@ -422,7 +437,7 @@ function inWindow(f){
   const o = new Set(JSON.parse(localStorage.getItem(sKey(otherWho())) || "[]"));
   if(o.has(f.id)) return true;
   if(peer && peer.s && peer.s.includes(f.id)) return true;
-  return ageDays(f.firstSeen) <= WINDOW;
+  return ageDays(f.firstSeen) <= WINDOW();
 }
 const peerName = () => peer ? (peer.w === "ladana" ? "Ladana" : "James") : "";
 const peerStarred  = id => !!(peer && peer.s && peer.s.includes(id));
@@ -430,7 +445,6 @@ const peerRejected = id => !!(peer && peer.r && peer.r[id]);
 const tierOf = f => f.tier === "sweep" ? "sweep" : "curated";
 
 document.getElementById("who").value = who;
-document.getElementById("meta").textContent = BOARD_META.runLabel || BOARD_META.updated || "";
 
 function setWho(){
   who = document.getElementById("who").value;
@@ -592,6 +606,7 @@ function cardHTML(f){
     peerStarred(f.id)  ? '<span class="pill p">★ '+esc(peerName())+'</span>' : '',
     peerRejected(f.id) ? '<span class="pill p">✕ '+esc(peerName())+'</span>' : '',
     f.wildcard ? '<span class="pill w">◇ wildcard</span>' : '',
+    ageDays(f.firstSeen) <= 7 ? '<span class="pill n">NEW</span>' : '',
     f.score!=null ? '<span class="pill scr">'+f.score+'/6</span>' : ''
   ].join("");
   const opts = '<option value="">cut — pick a reason…</option>'
@@ -822,7 +837,11 @@ function picks(){
   try{ navigator.clipboard.writeText(txt); }catch(e){}
 }
 
-render(); save(); loadSharedReviews();
+window.__boot = function(){
+  document.getElementById("meta").textContent = BOARD_META.runLabel || BOARD_META.updated || "";
+  render(); save(); loadSharedReviews();
+};
+if(window.FINDS) window.__boot();   // already loaded (standalone build)
 </script>
 </body>
 </html>
