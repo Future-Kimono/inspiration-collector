@@ -1,5 +1,13 @@
 # Inspiration Collector — Source Register
 
+> ### ⚠️ `PURPOSE.md` overrules this file
+> **A mood board for Future Kimonos rash guard design, filled automatically instead of by hand.**
+> Its job is to save Ladana and James time researching design inspiration.
+> Run → 20–30 findings → they ★ keep or ✕ cut with a reason → those marks teach the next run.
+> **One flat board. No tiers.** This file is *guidance on where to look*, never a specification
+> of what to find. If anything below contradicts `PURPOSE.md`, `PURPOSE.md` wins.
+
+
 Edit this file to change what the collector watches. Read at the start of every run alongside `TASTE.md` and `REJECTS.md`.
 
 **Restructured 6 August 2026 (second restructure).** The first restructure moved from BJJ-first to sport-first. That was still wrong. The register was a list of `products.json` endpoints, and **a product feed returns the average of a catalogue by construction** — which is exactly what round two put on the board.

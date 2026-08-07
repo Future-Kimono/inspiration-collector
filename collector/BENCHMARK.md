@@ -1,5 +1,13 @@
 # The benchmark — what "good" looks like
 
+> ### ⚠️ `PURPOSE.md` overrules this file
+> **A mood board for Future Kimonos rash guard design, filled automatically instead of by hand.**
+> Its job is to save Ladana and James time researching design inspiration.
+> Run → 20–30 findings → they ★ keep or ✕ cut with a reason → those marks teach the next run.
+> **One flat board. No tiers.** This file is *guidance on where to look*, never a specification
+> of what to find. If anything below contradicts `PURPOSE.md`, `PURPOSE.md` wins.
+
+
 > **⚠️ Also read `SEEDS.md` before harvesting — it is not in the skill's read-list.**
 > It carries the mandatory exploration quota, wildcard rules and the parts-bin principle.
 >

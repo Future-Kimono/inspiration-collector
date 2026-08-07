@@ -1,5 +1,13 @@
 # Taste profile — Future Kimonos
 
+> ### ⚠️ `PURPOSE.md` overrules this file
+> **A mood board for Future Kimonos rash guard design, filled automatically instead of by hand.**
+> Its job is to save Ladana and James time researching design inspiration.
+> Run → 20–30 findings → they ★ keep or ✕ cut with a reason → those marks teach the next run.
+> **One flat board. No tiers.** This file is *guidance on where to look*, never a specification
+> of what to find. If anything below contradicts `PURPOSE.md`, `PURPOSE.md` wins.
+
+
 How the collector calibrates. Read in full at the start of every run, together with `SOURCES.md`, `REJECTS.md`, `LEARNING.md` and **`SEEDS.md`**.
 
 > **⚠️ `SEEDS.md` is required reading and is not in the skill's read-list.** It holds the

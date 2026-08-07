@@ -1,5 +1,13 @@
 # How the collector learns
 
+> ### ⚠️ `PURPOSE.md` overrules this file
+> **A mood board for Future Kimonos rash guard design, filled automatically instead of by hand.**
+> Its job is to save Ladana and James time researching design inspiration.
+> Run → 20–30 findings → they ★ keep or ✕ cut with a reason → those marks teach the next run.
+> **One flat board. No tiers.** This file is *guidance on where to look*, never a specification
+> of what to find. If anything below contradicts `PURPOSE.md`, `PURPOSE.md` wins.
+
+
 > ## ⚠️ READ `SEEDS.md` NOW, BEFORE HARVESTING ANYTHING
 >
 > It is not in the skill's read-list, so this is the pointer. It is **required reading on

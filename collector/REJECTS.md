@@ -1,5 +1,13 @@
 # Rejects ledger
 
+> ### ⚠️ `PURPOSE.md` overrules this file
+> **A mood board for Future Kimonos rash guard design, filled automatically instead of by hand.**
+> Its job is to save Ladana and James time researching design inspiration.
+> Run → 20–30 findings → they ★ keep or ✕ cut with a reason → those marks teach the next run.
+> **One flat board. No tiers.** This file is *guidance on where to look*, never a specification
+> of what to find. If anything below contradicts `PURPOSE.md`, `PURPOSE.md` wins.
+
+
 **The dislike half of the loop.** `keepers/` holds what Ladana and James kept; this file holds what they threw out and why. The collector reads it in full at the start of every run and treats it as a filter, not as background reading.
 
 Created 6 August 2026, when the second board was rejected. Before this file existed the system could only learn from likes — which meant it kept re-proposing the same weak material because nothing recorded that it had already been turned down.
