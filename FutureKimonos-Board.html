@@ -37,18 +37,50 @@
   button.go{background:var(--accent);border-color:var(--accent);color:#fff}
   button.go:hover{filter:brightness(1.12)}
 
-  /* ── filters ──────────────────────────────────────────────── */
-  .filters{max-width:1700px;margin:0 auto;padding:14px 34px 16px;
-    display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-  .flab{font-size:9.5px;color:var(--faint);letter-spacing:.18em;text-transform:uppercase;
-    margin:0 6px 0 0}
-  .chip{font-size:11px;padding:4px 11px;border:1px solid var(--line);border-radius:2px;
-    color:var(--muted);cursor:pointer;user-select:none;letter-spacing:.04em;transition:.15s;
-    white-space:nowrap}
-  .chip:hover{border-color:var(--line2);color:var(--ink)}
-  .chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-  .chip.on.red{background:var(--accent);border-color:var(--accent);color:#fff}
-  .brk{flex-basis:100%;height:0}
+  /* ── filter bar ───────────────────────────────────────────────
+     One row. Four rows of thirty chips was noise; menus keep the same power
+     but only show what is switched on. */
+  .filters{max-width:1700px;margin:0 auto;padding:12px 34px 14px;
+    display:flex;flex-wrap:wrap;gap:8px;align-items:center;position:relative}
+
+  .seg{display:flex;border:1px solid var(--line2);border-radius:2px;overflow:hidden}
+  .seg button{border:none;border-radius:0;padding:6px 13px;font-size:11px;
+    color:var(--muted);background:transparent;border-right:1px solid var(--line2)}
+  .seg button:last-child{border-right:none}
+  .seg button.on{background:var(--ink);color:var(--bg)}
+  .seg button:hover:not(.on){color:var(--ink)}
+
+  .fw{position:relative}
+  .fbtn{display:flex;align-items:center;gap:7px;font-size:11px;padding:6px 12px;
+    border:1px solid var(--line2);border-radius:2px;background:transparent;
+    color:var(--muted);cursor:pointer;letter-spacing:.06em;text-transform:uppercase}
+  .fbtn:hover{color:var(--ink);border-color:var(--muted)}
+  .fbtn.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .fbtn .car{font-size:8px;opacity:.7}
+  .fmenu{display:none;position:absolute;top:calc(100% + 5px);left:0;z-index:60;
+    min-width:210px;max-height:340px;overflow-y:auto;background:var(--panel);
+    border:1px solid var(--line2);border-radius:3px;padding:5px;
+    box-shadow:0 14px 40px rgba(0,0,0,.6)}
+  .fmenu.open{display:block}
+  .fmenu button{display:flex;justify-content:space-between;align-items:center;gap:14px;
+    width:100%;border:none;border-radius:2px;background:transparent;color:var(--muted);
+    font-size:11.5px;padding:7px 9px;text-transform:none;letter-spacing:0;text-align:left}
+  .fmenu button:hover{background:var(--card);color:var(--ink)}
+  .fmenu button.on{color:var(--star)}
+  .fmenu button i{font-style:normal;color:var(--faint);font-size:10px;
+    font-variant-numeric:tabular-nums}
+
+  .tgl{font-size:11px;padding:6px 11px;border:1px solid var(--line2);border-radius:2px;
+    background:transparent;color:var(--muted);cursor:pointer;letter-spacing:.05em;
+    text-transform:none;white-space:nowrap}
+  .tgl:hover{color:var(--ink);border-color:var(--muted)}
+  .tgl.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .tgl.on.red{background:var(--accent);border-color:var(--accent);color:#fff}
+  .clr{font-size:10px;color:var(--faint);cursor:pointer;letter-spacing:.1em;
+    text-transform:uppercase;padding:6px 4px;background:none;border:none}
+  .clr:hover{color:var(--accent)}
+  .fcount{font-size:11px;color:var(--faint);margin-left:auto;
+    letter-spacing:.05em;font-variant-numeric:tabular-nums}
 
   /* ── page ─────────────────────────────────────────────────── */
   main{max-width:1700px;margin:0 auto;padding:0 34px 100px}
@@ -214,7 +246,6 @@
 </header>
 
 <main>
-  <p class="lede" id="note"></p>
   <div id="board"></div>
   <textarea id="out" readonly></textarea>
 </main>
@@ -785,7 +816,6 @@ const tierOf = f => f.tier === "sweep" ? "sweep" : "curated";
 
 document.getElementById("who").value = who;
 document.getElementById("meta").textContent = BOARD_META.runLabel || BOARD_META.updated || "";
-document.getElementById("note").textContent = BOARD_META.note || "";
 
 function setWho(){
   who = document.getElementById("who").value;
@@ -841,48 +871,81 @@ function openLb(src, cap){
 function closeLb(){ document.getElementById("lb").classList.remove("on"); }
 document.addEventListener("keydown", e => { if(e.key === "Escape") closeLb(); });
 
-function chip(val,on,kind,label,red){
-  return '<span class="chip'+(on?" on":"")+(red?" red":"")+'" data-kind="'+kind+
-         '" data-val="'+val+'">'+label+'</span>';
+/* One-row filter bar. Menus instead of thirty chips: the same power, but only
+   what is switched on is visible. */
+function menuFor(kind, cur, dict, counts, label){
+  const active = cur !== "all";
+  const shown  = active ? (dict[cur] || cur) : label;
+  const items = ['<button data-kind="'+kind+'" data-val="all" class="'+(active?"":"on")+'">All<i>'
+                 + Object.values(counts).reduce((a,b)=>a+b,0) + '</i></button>']
+    .concat(Object.keys(dict).filter(k => counts[k]).map(k =>
+      '<button data-kind="'+kind+'" data-val="'+k+'" class="'+(cur===k?"on":"")+'">'
+      + dict[k] + '<i>' + counts[k] + '</i></button>')).join("");
+  return '<div class="fw">'
+    + '<button class="fbtn'+(active?" on":"")+'" data-menu="'+kind+'">'
+    +   shown + '<span class="car">▼</span></button>'
+    + '<div class="fmenu" data-for="'+kind+'">' + items + '</div></div>';
 }
+
 function buildFilters(){
   const el = document.getElementById("filters");
   const live = FINDS.filter(inWindow);
-  const c = (k) => live.reduce((a,f)=>{const v=k(f); if(v)a[v]=(a[v]||0)+1; return a;},{});
-  const terrC = c(f=>f.territory), bucketC = c(f=>f.bucket), laneC = c(f=>f.lane);
-  const nSweep = live.filter(f=>tierOf(f)==="sweep").length;
-
-  let h = '<span class="flab">Show</span>';
-  h += chip("all", fTier==="all","tier","Everything "+live.length);
-  if(nSweep < live.length) h += chip("curated", fTier==="curated","tier","Curated "+(live.length-nSweep));
-  if(nSweep) h += chip("sweep", fTier==="sweep","tier","Sweep "+nSweep);
-  h += chip("star", fStar,"flag","★ Kept "+stars.size);
-  if(peer) h += chip("peer", fPeer,"flag","★ "+peerName()+" "+((peer.s||[]).length));
-  h += chip("rej", fShowRej,"flag","Cut "+rejects.size, true);
+  const tally = k => live.reduce((a,f)=>{const v=k(f); if(v)a[v]=(a[v]||0)+1; return a;},{});
+  const terrC = tally(f=>f.territory), bucketC = tally(f=>f.bucket), laneC = tally(f=>f.lane);
+  const nSweep = live.filter(f=>tierOf(f)==="sweep").length, nCur = live.length - nSweep;
   const nWild = live.filter(f=>f.wildcard).length;
-  if(nWild) h += chip("wild", fWild,"flag","◇ Wildcards "+nWild);
-  h += chip("new", fNew,"flag","New");
-  h += '<span class="brk"></span><span class="flab">Territory</span>';
-  h += chip("all", fTerr==="all","terr","All");
-  Object.keys(TERR).forEach(t => { if(terrC[t]) h += chip(t, fTerr===t,"terr",TERR[t]+" "+terrC[t]); });
-  h += '<span class="brk"></span><span class="flab">Ingredient</span>';
-  h += chip("all", fBucket==="all","bucket","All");
-  Object.keys(NAMES).forEach(b => { if(bucketC[b]) h += chip(b, fBucket===b,"bucket",NAMES[b]+" "+bucketC[b]); });
-  h += '<span class="brk"></span><span class="flab">Source</span>';
-  h += chip("all", fLane==="all","lane","All");
-  Object.keys(LANES).forEach(l => { if(laneC[l]) h += chip(l, fLane===l,"lane",LANES[l]+" "+laneC[l]); });
+
+  let h = '<div class="seg">'
+    + '<button data-kind="tier" data-val="all" class="'+(fTier==="all"?"on":"")+'">All '+live.length+'</button>'
+    + (nCur   ? '<button data-kind="tier" data-val="curated" class="'+(fTier==="curated"?"on":"")+'">Curated '+nCur+'</button>' : '')
+    + (nSweep ? '<button data-kind="tier" data-val="sweep" class="'+(fTier==="sweep"?"on":"")+'">Sweep '+nSweep+'</button>' : '')
+    + '</div>';
+
+  h += menuFor("terr",   fTerr,   TERR,  terrC,   "Territory");
+  h += menuFor("bucket", fBucket, NAMES, bucketC, "Ingredient");
+  h += menuFor("lane",   fLane,   LANES, laneC,   "Source");
+
+  h += '<button class="tgl'+(fStar?" on":"")+'" data-kind="flag" data-val="star">★ Kept '+stars.size+'</button>';
+  if(peer) h += '<button class="tgl'+(fPeer?" on":"")+'" data-kind="flag" data-val="peer">★ '+peerName()+' '+((peer.s||[]).length)+'</button>';
+  h += '<button class="tgl'+(fShowRej?" on red":"")+'" data-kind="flag" data-val="rej">Cut '+rejects.size+'</button>';
+  if(nWild) h += '<button class="tgl'+(fWild?" on":"")+'" data-kind="flag" data-val="wild">◇ '+nWild+'</button>';
+  h += '<button class="tgl'+(fNew?" on":"")+'" data-kind="flag" data-val="new">New</button>';
+
+  const anyOn = fTier!=="all"||fTerr!=="all"||fBucket!=="all"||fLane!=="all"||fStar||fPeer||fShowRej||fWild||fNew;
+  if(anyOn) h += '<button class="clr" id="clrall">clear</button>';
+  h += '<span class="fcount" id="fcount"></span>';
 
   el.innerHTML = h;
-  el.querySelectorAll(".chip").forEach(x => x.onclick = () => {
-    const k = x.dataset.kind, v = x.dataset.val;
+
+  el.querySelectorAll("[data-menu]").forEach(b => b.onclick = e => {
+    e.stopPropagation();
+    const want = el.querySelector('.fmenu[data-for="'+b.dataset.menu+'"]');
+    const wasOpen = want.classList.contains("open");
+    el.querySelectorAll(".fmenu").forEach(m => m.classList.remove("open"));
+    if(!wasOpen) want.classList.add("open");
+  });
+  el.querySelectorAll("[data-kind]").forEach(b => b.onclick = e => {
+    e.stopPropagation();
+    const k = b.dataset.kind, v = b.dataset.val;
     if(k==="terr") fTerr=v; else if(k==="bucket") fBucket=v;
     else if(k==="lane") fLane=v; else if(k==="tier") fTier=v;
     else if(v==="star") fStar=!fStar; else if(v==="new") fNew=!fNew;
     else if(v==="rej") fShowRej=!fShowRej; else if(v==="peer") fPeer=!fPeer;
     else if(v==="wild") fWild=!fWild;
+    el.querySelectorAll(".fmenu").forEach(m => m.classList.remove("open"));
     render();
   });
+  const clr = document.getElementById("clrall");
+  if(clr) clr.onclick = () => {
+    fTier=fTerr=fBucket=fLane="all";
+    fStar=fPeer=fShowRej=fWild=fNew=false;
+    render();
+  };
+  const fc = document.getElementById("fcount");
+  if(fc){ const n = visible().length; fc.textContent = n + (n===1?" find":" finds"); }
 }
+document.addEventListener("click", () =>
+  document.querySelectorAll(".fmenu").forEach(m => m.classList.remove("open")));
 
 function visible(){
   return FINDS.filter(inWindow)
@@ -1084,7 +1147,6 @@ function render(){
       '<div class="tierhead"><h2 class="serif">'+TIERS[tier].label+'</h2>'
       + '<span class="n">'+inTier.length+' find'+(inTier.length===1?"":"s")+'</span>'
       + '<span class="rule"></span></div>'
-      + '<p class="tierdesc">'+TIERS[tier].desc+'</p>'
       + '<div class="grid">'+inTier.map(cardHTML).join("")+'</div>';
     root.appendChild(sec);
     inTier.forEach(f => wire(sec.querySelector('[data-id="'+f.id+'"]'), f));
