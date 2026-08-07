@@ -285,12 +285,21 @@ const TERR = {
 };
 /* Reject reasons. Short and mutually exclusive — each one must map to a change the
    collector can actually make. Adding a reason means adding a rule it can apply. */
+/* "Bad type" meant bad TYPOGRAPHY, but on 7 Aug 2026 Ladana used it six times on a
+   crystal, a moth, an F1 car and a 12th-century drawing — i.e. she read it as "wrong
+   TYPE of thing". That is a labelling failure, not a user error.
+
+   REASONS drives the dropdown. RETIRED holds labels that are no longer offered but
+   still need to render, because marks made with them are real data and are never
+   deleted. Look up labels through label(), never through REASONS directly. */
 const REASONS = {
-  "plain":"Too plain", "busy":"Too busy", "cheap":"Looks cheap",
-  "generic":"Generic", "process":"Wrong process", "womens":"Women's product",
-  "recolour":"Recolour", "offbrand":"Off-brand", "type":"Bad type",
-  "quality":"Image too poor"
+  "notidea":"Not a rashguard idea", "plain":"Too plain", "busy":"Too busy",
+  "cheap":"Looks cheap", "generic":"Generic", "process":"Wrong process",
+  "womens":"Women's product", "recolour":"Recolour", "offbrand":"Off-brand",
+  "typography":"Bad typography", "quality":"Image too poor"
 };
+const RETIRED = { "type":"Not a rashguard idea (was: Bad type)" };
+const label = r => REASONS[r] || RETIRED[r] || r;
 
 
 let who = localStorage.getItem("fk-who") || "ladana";
@@ -422,6 +431,14 @@ const otherWho = () => who === "ladana" ? "james" : "ladana";
 
 /* Rolling window: unstarred finds age out. Anything either reviewer starred stays
    for good — keepers are the point. Rejects are never deleted; they are the signal. */
+/* ── Run numbering ──────────────────────────────────────────────────────────
+   "NEW" used to mean "first seen in the last 7 days", which was wrong twice
+   over: two runs on the same day were indistinguishable, and a find stayed
+   NEW for a week. Every find now carries an explicit run number, and NEW
+   means EXACTLY ONE THING — it came from the most recent run. */
+const LATEST_RUN = FINDS.reduce((m,f) => Math.max(m, f.run||0), 0);
+const isNew = f => (f.run||0) === LATEST_RUN;
+
 function inWindow(f){
   if(stars.has(f.id)) return true;
   const o = new Set(JSON.parse(localStorage.getItem(sKey(otherWho())) || "[]"));
@@ -571,7 +588,7 @@ function visible(){
     .filter(f => !fStar || stars.has(f.id))
     .filter(f => !fPeer || peerStarred(f.id))
     .filter(f => !fWild || f.wildcard)
-    .filter(f => !fNew || ageDays(f.firstSeen) <= 7);
+    .filter(f => !fNew || isNew(f));
 }
 
 function esc(t){ return String(t==null?"":t)
@@ -587,11 +604,11 @@ function cardHTML(f){
     : '<img loading="lazy" alt="'+esc(f.title)+'" src="'+f.img+'" onerror="this.closest(\'.card\').style.display=\'none\'">';
   const marks = [
     isStar ? '<span class="pill k">★ kept</span>' : '',
-    isRej  ? '<span class="pill c">✕ '+esc(REASONS[rejects.get(f.id)]||"")+'</span>' : '',
+    isRej  ? '<span class="pill c">✕ '+esc(label(rejects.get(f.id)))+'</span>' : '',
     peerStarred(f.id)  ? '<span class="pill p">★ '+esc(peerName())+'</span>' : '',
     peerRejected(f.id) ? '<span class="pill p">✕ '+esc(peerName())+'</span>' : '',
     f.wildcard ? '<span class="pill w">◇</span>' : '',
-    ageDays(f.firstSeen) <= 7 ? '<span class="pill n">NEW</span>' : '',
+    isNew(f) ? '<span class="pill n">NEW</span>' : '',
     f.score!=null ? '<span class="pill scr">'+f.score+'/6</span>' : ''
   ].join("");
   const opts = '<option value="">cut — pick a reason…</option>'
@@ -670,7 +687,7 @@ function openDetail(id){
   const pN = peer && peer.n && peer.n[f.id];
   const peerBits =
     (peerStarred(f.id)  ? '<div class="nlab">★ '+esc(peerName())+' kept this</div>' : '') +
-    (peerRejected(f.id) ? '<div class="nlab" style="color:var(--accent)">✕ '+esc(peerName())+' — '+esc(REASONS[peer.r[f.id]]||"")+'</div>' : '') +
+    (peerRejected(f.id) ? '<div class="nlab" style="color:var(--accent)">✕ '+esc(peerName())+' — '+esc(label(peer.r[f.id]))+'</div>' : '') +
     (pN ? '<div class="peernote">'+esc(pN)+'</div>' : '');
   const reasons = Object.keys(REASONS).map(r =>
     '<span class="rc'+(rejects.get(f.id)===r?" on":"")+'" data-r="'+r+'">'+REASONS[r]+'</span>').join("");
@@ -748,7 +765,9 @@ function render(){
      removed 7 Aug 2026 because it added structure without making the review any
      faster. Every finding is the same kind of thing: something that might spark
      a design idea. Newest first, so a fresh run is at the top. */
-  list.sort((a,b) => (b.firstSeen||"").localeCompare(a.firstSeen||""));
+  /* Newest RUN first, and runs never interleave. Within a run, newest id first.
+     Sorting on firstSeen alone jumbled two runs that shared a date. */
+  list.sort((a,b) => ((b.run||0) - (a.run||0)) || String(b.id).localeCompare(String(a.id)));
   const g = document.createElement("div");
   g.className = "grid";
   g.innerHTML = list.map(cardHTML).join("");
@@ -770,7 +789,7 @@ function lineFor(f){
   if(notes.get(f.id))    t += "  WHY I KEPT IT: " + notes.get(f.id) + "\n";
   if(peerStarred(f.id))  t += "  " + peerName() + ": KEPT\n";
   if(peer && peer.n && peer.n[f.id]) t += "  " + peerName() + " SAYS: " + peer.n[f.id] + "\n";
-  if(peerRejected(f.id)) t += "  " + peerName() + ": REJECTED — " + (REASONS[peer.r[f.id]]||peer.r[f.id]) + "\n";
+  if(peerRejected(f.id)) t += "  " + peerName() + ": REJECTED — " + label(peer.r[f.id]) + "\n";
   return t;
 }
 
@@ -800,7 +819,7 @@ function picks(){
   else Object.keys(REASONS).forEach(r => {
     const items = rej.filter(f => rejects.get(f.id) === r);
     if(!items.length) return;
-    txt += "\n## " + REASONS[r] + "  (" + items.length + ")\n";
+    txt += "\n## " + label(r) + "  (" + items.length + ")\n";
     items.forEach(f => txt += lineFor(f));
   });
   txt += "\n---\nPaste this to Claude. Keeps become keeper cards and direction sheets; " +

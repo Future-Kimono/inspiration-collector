@@ -463,3 +463,58 @@ Celtic zoomorphs work too, a thousand years earlier, which is why the two sit to
 
 **Why this matters for sublimation:** ribbon interlace is bold, high-contrast and large-scale,
 which is precisely what survives on 160–220 GSM poly-spandex. Fine hairline abstraction does not.
+
+---
+
+## ⛔ S24/S25 CORRECTION — 7 August 2026, after run 5 was reviewed
+
+**Run 5 used the expansion lenses for the first time. 4 kept, 11 cut. Read this before using
+S24 again, because the lenses were applied wrongly and the correction is specific.**
+
+Ladana, in words: *"the stuff with crystals and ingridients are very wrong — very wrong
+direction."*
+
+### What she kept, and what it has in common
+
+| Kept | What it is |
+|---|---|
+| `F0807-30` Tang gold phoenix | A flat silhouette — **already reads as an apparel graphic** |
+| `F0807-38` Venum Zenith white | A rash guard |
+| `F0807-40` Venum Rage, all-texture | A rash guard |
+| `F0807-41` 8 Weapons yant | A rash guard |
+
+**Three garments and one flat graphic.** Everything cut was raw source material: a crystal, a
+geode, two moth photographs, a rock wall, a museum textile shot flat, an F1 car, a 12th-century
+drawing.
+
+### The rule that comes out of it
+
+> **A find has to look like it could BE a rash guard design, or be one step away from one.**
+> The lens is for finding *graphics*, not for finding *things*.
+
+A photograph of a beautiful object is research. A flat graphic — a print, a silhouette, a piece
+of lettering, an illustration, a livery *treatment* — is inspiration. **Only the second belongs
+on the board.** Everything else can go in the brief as prose.
+
+### What this does NOT close
+
+- **Mythology, ancient ornament, calligraphy and cultural symbols all still work** — they
+  produced the phoenix, and earlier they produced the ukiyo-e and calligraphy pieces she kept.
+  The problem was never the lens, it was **filing the object instead of the artwork**.
+- **Natural science as a texture idea is not closed** — she has kept croc hide twice. What is
+  closed is *filing a macro photograph of an animal or a mineral and calling it a find*. Croc
+  hide arrived on the board **as a printed garment**, and that is why it worked.
+
+### Closed outright
+
+**Crystals, minerals, geodes and natural-history macro photography.** By explicit instruction.
+Note this overrides the wildcard exemption: two of the six were wildcards, and normally a
+rejected wildcard forms no rule at all — **but Ladana or James speaking in words outranks that,
+and that is exactly the escape hatch the rule was designed to have.**
+
+### My error, recorded so it is not repeated
+
+Run 4's data said *product listings get cut, reference artwork keeps*. I concluded "file more
+museum sources" and swung the run to 70% reference. **The right conclusion was "file things that
+read as apparel graphics"** — the earlier reference keeps were ukiyo-e prints and calligraphy,
+which look like apparel graphics. Crystals do not. I over-corrected on the wrong axis.

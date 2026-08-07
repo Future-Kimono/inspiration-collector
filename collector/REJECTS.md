@@ -67,6 +67,8 @@ These are earned rules. Each one traces back to rejections below.
 | 11 | **No BJJ product whose only design event is a wordmark or a base colour.** `bjj` lane, sweep-grade product only | Run 4 — 5 `plain`, 3 in `bjj` |
 | 12 | **Americana / collegiate / basketball-jersey styling is off-brand.** Scoped to that styling, not to the brands that made it | Run 4 — 5 `offbrand`, 3 Gold BJJ (Canarinho, Finest City, All-American) |
 | 13 | Crowded multi-figure ukiyo-e with no dominant element. **Single-figure and landscape prints are unaffected and keep well** | Run 4 — 2 `busy`, both multi-figure Met prints |
+| 14 | **DIRECTION CLOSED BY LADANA, IN WORDS, 7 Aug 2026: crystals, minerals, geodes and natural-history macro.** *"the stuff with crystals and ingridients are very wrong - very wrong direction"* | Her instruction + 6 cuts (`F0807-48`, `-49`, `-47`, `-51`, `-50`, `-44`) |
+| 15 | **Raw source material that does not read as an apparel graphic does not belong on the board.** A museum textile, a rock, an insect wing or a photo of a race car is research, not inspiration. **Artwork that already reads as a graphic — prints, calligraphy, illustration, silhouettes — is unaffected and keeps well** | Run 5: 11 of 23 cut, almost all raw reference. The 4 keeps were 3 garments and 1 flat silhouette |
 
 ---
 
@@ -76,6 +78,12 @@ Newest first. `Reason` uses the board's chip vocabulary so it stays groupable.
 
 | Date | Find | Brand | Reason | Note |
 |---|---|---|---|---|
+| 2026-08-07 | Bismuth crystal, geode | Wikimedia | `type`→**closed** | Ladana closed the whole mineral/crystal direction in words. Both were wildcards, which normally exempts them from rule-forming — **an explicit instruction overrides that** |
+| 2026-08-07 | Moth scales, luna moth wing | Wikimedia | `type`/`process` | Natural-history macro. Same closure |
+| 2026-08-07 | Chōjū-giga frog, McLaren livery, Prague sgraffito | Wikimedia | `type` | Raw reference that does not read as apparel. See filter 15 |
+| 2026-08-07 | Scythian stag plaque | Cleveland | `offbrand` | Object photography, not a graphic |
+| 2026-08-07 | Javanese sarong ×2 | Cleveland | `process`/`busy` | Museum textile shot flat — reads as a museum record, not a design |
+| 2026-08-07 | Peruvian feathered panel | Cleveland | `recolour` | My strongest argument of the run, and she still cut it. Noted |
 | 2026-08-07 | 6 MX jerseys (Fasthouse ×5, Troy Lee ×1) | Fasthouse, Troy Lee | `cheap` | Flat vector, no tonal information. **Scoped to MX product sweep — the motorsport lane stays open**, and the Troy Lee Jersey Myth colourway was kept in the same run |
 | 2026-08-07 | 5 plain garments | Shoyoroll, Gold BJJ, Troy Lee, Venum | `plain` | Base colour or wordmark as the only design event |
 | 2026-08-07 | 5 off-brand | Gold BJJ ×3, Troy Lee, The Met | `offbrand` | Americana/collegiate styling. One Met shaffron also off-brand |
@@ -112,7 +120,9 @@ Premium test numbers refer to the six tests in `BENCHMARK.md`: 1 one hero · 2 n
 | `womens` | Women's product | Standing filter 1. Should never reach the board — if it does, the harvest step is broken |
 | `recolour` | Not a new design | Verify against the ledger and the FK catalogue before filing, not after |
 | `offbrand` | Off-brand for FK | Territory is wrong or absent. Re-check against the six territories in `BENCHMARK.md` |
-| `type` | Bad type | Enforce test 4 — layered typography. One wordmark scaled up, or default sports italic, is out |
+| `notidea` | **Not a rashguard idea** | **The chip Ladana actually wanted.** The thing may be beautiful and still be raw research. Stop filing that category |
+| `typography` | Bad typography | Enforce test 4 — layered typography. One wordmark scaled up, or default sports italic, is out |
+| `type` | *Retired 7 Aug 2026* | Was labelled "Bad type" and read as "wrong type of thing". Historic rows kept; the chip now says so |
 | `quality` | Image too poor to judge | Harvest failure. Find a better image or drop the find — never file something unassessable |
 
 ### A note on where rejects should be coming from

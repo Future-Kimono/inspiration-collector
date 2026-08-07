@@ -8,7 +8,14 @@
 > of what to find. If anything below contradicts `PURPOSE.md`, `PURPOSE.md` wins.
 
 
-How the collector calibrates. Read in full at the start of every run, together with `SOURCES.md`, `REJECTS.md`, `LEARNING.md` and **`SEEDS.md`**.
+How the collector calibrates. Read in full at the start of every run, together with `SOURCES.md`, `REJECTS.md`, `LEARNING.md`, **`SEEDS.md`** and **`CONSUMER.md`**.
+
+> **⚠️ `CONSUMER.md` carries the single biggest design constraint in the system and it is not
+> a matter of taste:** IBJJF no-gi rash guards must have a **black, white or black-and-white
+> base plus at least 10% of the athlete's belt-rank colour.** Khaki, olive, burgundy and jade
+> are all illegal for competition. Base colour is not a free choice for the competition
+> segment — design freedom lives in texture, graphic and where the rank colour is placed.
+> Read it before scoring any find whose main idea is an unusual base colour.
 
 > **⚠️ `SEEDS.md` is required reading and is not in the skill's read-list.** It holds the
 > exploration quota (~2 wildcards and ~1 seed chased per run, mandatory), the rule-scoping
