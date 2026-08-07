@@ -289,3 +289,59 @@ Beyond the competitor set: MMA and promotion outfitters (ONE, PFL, Bellator each
 own), regional labels surfaced through retailer discovery, and whatever the athlete lane turns
 up. **Breadth of brands is only useful if the quality bar holds** — a longer list that produces
 the same average product is worse than a short one.
+
+### S21 — Abstract calligraphy
+
+Ladana, 7 Aug 2026: *"I love the gradient, patterns and prints of these images."* Three filed
+on the board as `F0807-11/12/13`.
+
+**Why it belongs here.** It is the same principle already proven in `BENCHMARK.md` — *kanji
+as a graphic element, not as text* — pushed further: the letterform abandoned as language
+entirely and used as pure gesture. And the mechanics transfer directly to a back panel:
+
+- **One motif at two densities** — a dense low-contrast field of the same marks behind a
+  single bold gesture. Background version and hero version of one thing.
+- **Scale contrast inside a single stroke** — hairline to thick in one movement.
+- **A third way to use gold** — leaf as torn patches, and as a broad diagonal sweep acting as
+  a light source. The board now holds three distinct gold treatments: line, patch, sweep.
+- **Scraped and plaster grounds** — palette-knife texture with hard dragged edges, not smooth
+  digital gradients. This is what makes them read as objects rather than files.
+
+### ⚠️ Read before anyone draws anything
+
+**Arabic calligraphy is very often religious.** These three appear to be Islamic devotional
+works — sacred text rendered as art. Putting sacred script on a combat-sports garment, worn
+in a fight, on the floor, sweated in, is likely to cause real offence, and would be read as
+appropriation rather than homage.
+
+**How to use these safely:** take the *treatment* — the gesture, the two-density layering, the
+gold handling, the scraped ground — and apply it to a script the brand can legitimately claim.
+Japanese kanji and kana are already native to Future Kimonos. Latin lettering works too. The
+mechanics here have nothing to do with which alphabet they are applied to.
+
+**Do not reproduce these letterforms.** Not a legal point — a respect one. Flagged rather than
+quietly ignored, because it would be an easy and expensive mistake.
+
+---
+
+## S22 — A new discovery method: the plain visual search
+
+Ladana, 7 Aug 2026: *"I found them on Google Images when I only had to search 'abstract
+calligraphy' and this was on the first page — I didn't have to dig deep to find such good
+output."*
+
+**That is a finding about the tool, not just about calligraphy.** The collector has been using
+long, specific, compound search strings. She used **two ordinary words naming an art form**
+and got better material on page one than several of those elaborate searches produced.
+
+**The method:** search the *name of a visual tradition or medium*, not a description of what
+you want. `abstract calligraphy` · `sumi-e` · `azulejo` · `bokashi` · `irezumi` · `risograph`
+· `chiaroscuro` · `art nouveau poster` · `constructivist poster` · `batik` · `shibori` ·
+`marbling` · `kintsugi` · `woodblock` · `screenprint texture`.
+
+Naming a tradition returns its best examples, because that is how the internet indexes art.
+Describing a mood returns stock imagery.
+
+**Add to `SOURCES.md` as a standing method once it has produced a second good run** — one
+success is not yet a pattern, and the rules in this system are supposed to earn their place.
+Ladana's own result is the first data point and it was a strong one.
