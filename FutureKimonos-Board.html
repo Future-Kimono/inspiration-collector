@@ -95,7 +95,15 @@
     color:var(--faint);border:1px solid var(--line2);border-radius:2px;padding:2px 6px;margin:7px 5px 0 0}
   .tag.t{color:var(--accent);border-color:rgba(237,31,36,.4)}
 
-  .note{font-size:12px;line-height:1.65;color:var(--muted);padding:12px 14px 0}
+  /* Notes are long by design — they carry the actual lesson. Clamp them so the
+     masonry stays even, and open on hover for the full read. */
+  .note{font-size:12px;line-height:1.6;color:var(--muted);padding:12px 14px 0;
+    display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+    transition:.2s}
+  .card:hover .note{-webkit-line-clamp:40}
+  .kicker{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);
+    padding:12px 14px 0}
+  .kicker b{color:var(--accent);font-weight:400}
   .hex{font:10.5px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--faint);
     padding:10px 14px 0;letter-spacing:.04em}
 
@@ -740,9 +748,9 @@ function cardHTML(f){
     : '<img loading="lazy" alt="'+f.title.replace(/"/g,"&quot;")+'" src="'+f.img+'" onerror="this.closest(\'.card\').style.display=\'none\'">';
   const chips = [
     f.territory ? '<span class="tag t">'+(TERR[f.territory]||f.territory)+'</span>' : '',
+    '<span class="tag">'+(NAMES[f.bucket]||f.bucket)+'</span>',
     '<span class="tag">'+(LANES[f.lane]||f.lane)+'</span>',
-    f.score!=null ? '<span class="tag">'+f.score+'/6</span>' : '',
-    tierOf(f)==="sweep" ? '<span class="tag">sweep</span>' : ''
+    f.score!=null ? '<span class="tag">'+f.score+'/6</span>' : ''
   ].join("");
   const hex = f.swatches
     ? '<div class="hex">'+f.swatches.map((s,i)=>(f.swatchNames?f.swatchNames[i]+" ":"")+s).join("  ·  ")+'</div>' : '';
@@ -759,6 +767,7 @@ function cardHTML(f){
     + '<div class="meta"><div class="ttl serif">'+f.title+'</div>'
     + '<div class="by">'+f.brand+'</div>'+chips+'</div></div>'
     + flags + hex
+    + '<div class="kicker"><b>'+(TERR[f.territory]||"—")+'</b> · '+(NAMES[f.bucket]||f.bucket)+'</div>'
     + '<div class="note">'+f.note+'</div>'
     + '<div class="acts">'
     +   '<button class="ib star'+(isStar?" on":"")+'" title="Keep">'+(isStar?"★":"☆")+'</button>'
@@ -797,31 +806,25 @@ function render(){
 
   /* Group by tier, then by ingredient — the two-level split is what makes a long
      board scannable instead of one undifferentiated wall. */
+  /* One masonry per tier, NOT per ingredient. Most ingredient buckets hold only one
+     or two finds, so a grid each collapsed to a single column and wasted the page.
+     Ingredient stays as a label on the card and as a filter chip. */
   ["curated","sweep"].forEach(tier => {
     const inTier = list.filter(f => tierOf(f) === tier);
     if(!inTier.length) return;
+    /* Order by ingredient so related finds still sit together in the flow. */
+    const order = Object.keys(NAMES);
+    inTier.sort((a,b) => order.indexOf(a.bucket) - order.indexOf(b.bucket));
     const sec = document.createElement("section");
     sec.className = "tier";
     sec.innerHTML =
       '<div class="tierhead"><h2 class="serif">'+TIERS[tier].label+'</h2>'
-      + '<span class="n">'+inTier.length+' finds</span><span class="rule"></span></div>'
-      + '<p class="tierdesc">'+TIERS[tier].desc+'</p>';
-    Object.keys(NAMES).forEach(b => {
-      const items = inTier.filter(f => f.bucket === b);
-      if(!items.length) return;
-      const h = document.createElement("h3");
-      h.innerHTML = NAMES[b] + ' <em>' + items.length + '</em>';
-      sec.appendChild(h);
-      const g = document.createElement("div");
-      g.className = "grid";
-      g.innerHTML = items.map(cardHTML).join("");
-      sec.appendChild(g);
-      items.forEach(f => {
-        const el = g.querySelector('[data-id="'+f.id+'"]');
-        if(el) wire(el, f);
-      });
-    });
+      + '<span class="n">'+inTier.length+' find'+(inTier.length===1?"":"s")+'</span>'
+      + '<span class="rule"></span></div>'
+      + '<p class="tierdesc">'+TIERS[tier].desc+'</p>'
+      + '<div class="grid">'+inTier.map(cardHTML).join("")+'</div>';
     root.appendChild(sec);
+    inTier.forEach(f => wire(sec.querySelector('[data-id="'+f.id+'"]'), f));
   });
 }
 
