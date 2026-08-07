@@ -190,11 +190,66 @@ let peer = readPeer();
      [ { "who":"james", "at":"2026-08-07", "s":[ids], "r":{id:reason} }, ... ]
    This is what makes the board shared rather than per-browser. Writing back is
    a commit — the export block below is the payload. */
+/* ── The review server ──────────────────────────────────────────────────────
+   Set API_BASE and stars/rejects save to the internet, so they follow you
+   between laptop and phone and both reviewers see each other live.
+   Leave it empty and the board still works, saving to this browser only. */
+const API_BASE = "";   // e.g. "https://fk-board.<subdomain>.workers.dev"
+
+const kKey = () => "fk-key";
+const setStatus = t => { const e = document.getElementById("synced"); if(e) e.textContent = t; };
+
+async function apiGet(){
+  if(!API_BASE) return null;
+  try{
+    const r = await fetch(API_BASE + "/reviews", {cache:"no-store"});
+    return r.ok ? await r.json() : null;
+  }catch(e){ return null; }
+}
+
+let saveTimer = null, saveQueued = false;
+async function apiSave(){
+  if(!API_BASE) return;
+  let key = localStorage.getItem(kKey());
+  if(!key){
+    key = prompt("One-time setup — enter the team passphrase to save your review:");
+    if(!key) { setStatus("not saved — no passphrase"); return; }
+    localStorage.setItem(kKey(), key);
+  }
+  setStatus("saving…");
+  try{
+    const r = await fetch(API_BASE + "/reviews", {
+      method:"POST",
+      headers:{"Content-Type":"application/json","X-Board-Key":key},
+      body: JSON.stringify({ who, s:[...stars], r:Object.fromEntries(rejects) })
+    });
+    if(r.status === 401){
+      localStorage.removeItem(kKey());
+      setStatus("wrong passphrase — click a star to try again");
+      return;
+    }
+    setStatus(r.ok ? "saved " + new Date().toLocaleTimeString() : "save failed");
+  }catch(e){ setStatus("offline — saved in this browser only"); }
+}
+/* Only save after the person has actually clicked something. Without this the
+   page would ask for the passphrase on load, before anyone had marked anything. */
+let userActed = false;
+/* Debounced: clicking twenty stars in a row is one save, not twenty. */
+function queueSave(){
+  if(!API_BASE || !userActed) return;
+  saveQueued = true;
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => { saveQueued = false; apiSave(); }, 1200);
+}
+
 async function loadSharedReviews(){
   try{
-    const r = await fetch("reviews.json?cb=" + Date.now(), {cache:"no-store"});
-    if(!r.ok) return;
-    const arr = await r.json();
+    let arr = await apiGet();
+    if(!arr){
+      const r = await fetch("reviews.json?cb=" + Date.now(), {cache:"no-store"});
+      if(!r.ok) return;
+      arr = await r.json();
+    }
     if(!Array.isArray(arr)) return;
     const mine  = arr.filter(x => x && x.who === who).pop();
     const other = arr.filter(x => x && x.who && x.who !== who).pop();
@@ -210,10 +265,11 @@ async function loadSharedReviews(){
       rejects = new Map(Object.entries(mine.r || {}));
       save();
     }
-    const el = document.getElementById("synced");
-    if(el) el.textContent = other
-      ? "synced · " + (other.who === "ladana" ? "Ladana" : "James") + "'s review from " + (other.at || "?")
-      : "synced · no review from the other reviewer yet";
+    setStatus(other
+      ? (API_BASE ? "live · " : "synced · ") +
+        (other.who === "ladana" ? "Ladana" : "James") + "'s review from " + (other.at || "?")
+      : (API_BASE ? "live · no review from the other reviewer yet"
+                  : "synced · no review from the other reviewer yet"));
     render();
   }catch(e){ /* running from a local file, or no reviews.json yet — fine */ }
 }
@@ -311,23 +367,28 @@ function setWho(){
   save(); render();
 }
 function save(){
+  /* Always write locally first — the board keeps working with no network —
+     then push to the server if one is configured. */
   localStorage.setItem(sKey(who), JSON.stringify([...stars]));
   localStorage.setItem(rKey(who), JSON.stringify(Object.fromEntries(rejects)));
   document.getElementById("tally").textContent =
     stars.size + " starred · " + rejects.size + " rejected";
+  queueSave();
 }
 /* Starring and rejecting are mutually exclusive. Starring something clears its reject. */
 function toggleStar(id){
+  userActed = true;
   if(stars.has(id)) stars.delete(id);
   else { stars.add(id); rejects.delete(id); }
   save(); render();
 }
 function setReject(id, reason){
+  userActed = true;
   if(rejects.get(id) === reason) rejects.delete(id);
   else { rejects.set(id, reason); stars.delete(id); }
   save(); render();
 }
-function clearReject(id){ rejects.delete(id); save(); render(); }
+function clearReject(id){ userActed = true; rejects.delete(id); save(); render(); }
 
 function buildFilters(){
   const el = document.getElementById("filters");
