@@ -1,6 +1,12 @@
 # Taste profile — Future Kimonos
 
-How the collector calibrates. Read in full at the start of every run, together with `SOURCES.md` and `REJECTS.md`.
+How the collector calibrates. Read in full at the start of every run, together with `SOURCES.md`, `REJECTS.md`, `LEARNING.md` and **`SEEDS.md`**.
+
+> **⚠️ `SEEDS.md` is required reading and is not in the skill's read-list.** It holds the
+> exploration quota (~2 wildcards and ~1 seed chased per run, mandatory), the rule-scoping
+> limits, and the parts-bin principle. **This file describes taste; `SEEDS.md` stops that
+> taste becoming a cage.** Nothing below may be used to narrow the search further than the
+> evidence supports.
 
 **Rewritten 6 August 2026 (round three) after the board was rejected for a second time.** Rounds one and two both failed, for different reasons, and the diagnosis for round two is written down below because it is the reason this file now has a premium bar in it.
 

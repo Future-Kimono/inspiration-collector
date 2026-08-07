@@ -1,5 +1,12 @@
 # The benchmark — what "good" looks like
 
+> **⚠️ Also read `SEEDS.md` before harvesting — it is not in the skill's read-list.**
+> It carries the mandatory exploration quota, wildcard rules and the parts-bin principle.
+>
+> **This file is a floor for *quality*, not a template for *content*.** Matching the subject
+> matter of the three benchmark designs is not the goal — clearing their standard of craft is.
+> A find that looks nothing like them can still be excellent.
+
 **Created 6 August 2026 from Ladana's own design files and her written direction.** This is the most important calibration file in the system. `TASTE.md` describes what the brand *sells*; this file describes what the brand *aspires to*, using work that already exists.
 
 **Read this before scoring anything.** When a find is borderline, hold it next to the three benchmark designs in `benchmark/` and ask whether it belongs in the same room.

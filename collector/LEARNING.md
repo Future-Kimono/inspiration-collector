@@ -1,6 +1,29 @@
 # How the collector learns
 
+> ## ⚠️ READ `SEEDS.md` NOW, BEFORE HARVESTING ANYTHING
+>
+> It is not in the skill's read-list, so this is the pointer. It is **required reading on
+> every run** and it governs how far the collector is allowed to wander.
+>
+> It carries three things the skill does not know about:
+>
+> 1. **The exploration quota** — roughly a third of every run must come from somewhere not
+>    yet established. ~2 **wildcards** marked `wildcard: true`, and ~1 **seed** genuinely
+>    chased. This is mandatory, not a preference.
+> 2. **Rule scoping** — a rejection means *the execution was wrong*, never *the direction is
+>    closed*. Only Ladana or James, in words, can close a direction. Wildcard rejects are
+>    exempt from rule-forming entirely.
+> 3. **The board is a parts bin, not a shortlist** — a find can be worth keeping for one
+>    element while the rest is bad. A star is not endorsement of the whole object.
+
+---
+
 **This is the loop that makes the tool get better instead of repeating itself.**
+
+**The purpose is to widen the field of options, not to get better at agreeing with what has
+already been liked.** A run returning thirty variations on last week's keepers has failed,
+even if every find is good. `learn.mjs` prints a convergence warning when it starts happening
+— when it fires, push exploration *up*, not down.
 
 Ladana and James mark the board. Those marks become rules. The next run applies the rules
 before it scores anything. Nothing here is automatic magic — the learning is literal:
